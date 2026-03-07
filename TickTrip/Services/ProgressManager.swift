@@ -3,6 +3,8 @@ import Combine
 import FirebaseAuth
 
 class ProgressManager: ObservableObject {
+    static let shared = ProgressManager()
+    
     @Published var completedPlaces: Set<String> = []
     @Published var foxMessage: String? = nil
     @Published var showFoxCelebration: Bool = false
@@ -10,7 +12,7 @@ class ProgressManager: ObservableObject {
     @Published var completedCities: Set<String> = []
     @Published var completedCountries: Set<String> = []
     
-    init() {
+    private init() {
         if Auth.auth().currentUser != nil {
             fetchUserProgress()
         }
@@ -22,7 +24,7 @@ class ProgressManager: ObservableObject {
         Task {
             do {
                 if let progress = try await ProgressService.shared.fetchProgress(userId: userId) {
-                    DispatchQueue.main.async {
+                    await MainActor.run {
                         self.completedPlaces = Set(progress.visitedPlaceIds)
                         self.completedCities = Set(progress.completedCityIds)
                         self.completedCountries = Set(progress.completedCountryIds)
@@ -56,15 +58,62 @@ class ProgressManager: ObservableObject {
         if completedPlaces.contains(placeId) {
             completedPlaces.remove(placeId)
             HapticManager.shared.impact(.light)
-            Task { try? await ProgressService.shared.togglePlaceCompletion(userId: userId, placeId: placeId, isCompleted: false) }
+            
+            // Un-complete city/country if needed
+            completedCities.remove(cityId)
+            completedCountries.remove(countryId)
+            
+            Task {
+                try? await ProgressService.shared.togglePlaceCompletion(userId: userId, placeId: placeId, isCompleted: false)
+                try? await ProgressService.shared.updateCityCountryProgress(
+                    userId: userId,
+                    completedCityIds: Array(completedCities),
+                    completedCountryIds: Array(completedCountries)
+                )
+            }
         } else {
             completedPlaces.insert(placeId)
             HapticManager.shared.checkPlace()
             triggerFoxReaction(placeId: placeId, cityId: cityId)
-            Task { try? await ProgressService.shared.togglePlaceCompletion(userId: userId, placeId: placeId, isCompleted: true) }
+            
+            Task {
+                try? await ProgressService.shared.togglePlaceCompletion(userId: userId, placeId: placeId, isCompleted: true)
+            }
             
             // Check if city is now completed after checking this place
             checkCityCompletion(cityId: cityId, countryId: countryId, userId: userId)
+        }
+        
+        // Sync with TripManager
+        syncWithTripManager(placeId: placeId, cityId: cityId)
+    }
+    
+    /// Sync checked places with the active trip's cityProgress
+    private func syncWithTripManager(placeId: String, cityId: String) {
+        let tripManager = TripManager.shared
+        guard let activeTrip = tripManager.activeTrip,
+              activeTrip.cityIds.contains(cityId) else { return }
+        
+        if let tripIndex = tripManager.trips.firstIndex(where: { $0.id == activeTrip.id }),
+           let progressIndex = tripManager.trips[tripIndex].cityProgress.firstIndex(where: { $0.cityId == cityId }) {
+            
+            let cityPlaces = Place.places(for: cityId)
+            let completedForCity = cityPlaces.filter { completedPlaces.contains($0.id) }.map { $0.id }
+            
+            tripManager.trips[tripIndex].cityProgress[progressIndex].completedPlaceIds = completedForCity
+            tripManager.trips[tripIndex].cityProgress[progressIndex].completionPercentage =
+                cityPlaces.isEmpty ? 0 : Double(completedForCity.count) / Double(cityPlaces.count)
+            tripManager.trips[tripIndex].cityProgress[progressIndex].isCompleted =
+                !cityPlaces.isEmpty && completedForCity.count == cityPlaces.count
+            
+            tripManager.trips[tripIndex].updatedAt = Date()
+            if tripManager.activeTrip?.id == activeTrip.id {
+                tripManager.activeTrip = tripManager.trips[tripIndex]
+            }
+            
+            // Save to Firebase
+            let updatedTrip = tripManager.trips[tripIndex]
+            Task { try? await TripService.shared.saveTrip(updatedTrip) }
         }
     }
     
@@ -75,9 +124,16 @@ class ProgressManager: ObservableObject {
         let allCompleted = cityPlaces.allSatisfy { completedPlaces.contains($0.id) }
         if allCompleted && !completedCities.contains(cityId) {
             completedCities.insert(cityId)
-            // City check off can be added to ProgressService if needed
-            
             checkCountryCompletion(countryId: countryId, userId: userId)
+            
+            // Save city/country completion to Firebase
+            Task {
+                try? await ProgressService.shared.updateCityCountryProgress(
+                    userId: userId,
+                    completedCityIds: Array(completedCities),
+                    completedCountryIds: Array(completedCountries)
+                )
+            }
         }
     }
     
@@ -88,7 +144,6 @@ class ProgressManager: ObservableObject {
         let allCompleted = countryCities.allSatisfy { completedCities.contains($0.id) }
         if allCompleted && !completedCountries.contains(countryId) {
             completedCountries.insert(countryId)
-            // Country check off can be added to ProgressService if needed
         }
     }
     

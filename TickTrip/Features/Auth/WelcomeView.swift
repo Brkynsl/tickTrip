@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @EnvironmentObject var authManager: AuthManager
+    @Environment(\.colorScheme) var colorScheme
     @State private var showLogin = false
     @State private var showSignUp = false
     @State private var showTerms = false
@@ -70,15 +71,30 @@ struct WelcomeView: View {
     // MARK: - Background
     private var backgroundLayer: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color(hue: 0.08, saturation: 0.15, brightness: 0.98),
-                    Color(hue: 0.05, saturation: 0.08, brightness: 0.96),
-                    Color(hue: 0.55, saturation: 0.10, brightness: 0.95),
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            // Adaptive gradient for light/dark mode
+            Group {
+                if colorScheme == .dark {
+                    LinearGradient(
+                        colors: [
+                            Color(hue: 0.08, saturation: 0.25, brightness: 0.12),
+                            Color(hue: 0.05, saturation: 0.20, brightness: 0.10),
+                            Color(hue: 0.55, saturation: 0.15, brightness: 0.08),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                } else {
+                    LinearGradient(
+                        colors: [
+                            Color(hue: 0.08, saturation: 0.15, brightness: 0.98),
+                            Color(hue: 0.05, saturation: 0.08, brightness: 0.96),
+                            Color(hue: 0.55, saturation: 0.10, brightness: 0.95),
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                }
+            }
             .ignoresSafeArea()
             
             // Floating destination icons
@@ -156,10 +172,10 @@ struct WelcomeView: View {
                     Text("continue_with_apple".localized)
                         .font(TTTypography.titleMedium)
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(colorScheme == .dark ? .black : .white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(Color.black)
+                .background(colorScheme == .dark ? Color.white : Color.black)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
             
@@ -174,9 +190,9 @@ struct WelcomeView: View {
                 .foregroundStyle(TTColors.textPrimary)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                .background(TTColors.cardBackground)
+                .background(colorScheme == .dark ? Color(white: 0.15) : Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .shadow(color: TTColors.cardShadow, radius: 4, x: 0, y: 2)
+                .shadow(color: Color.black.opacity(colorScheme == .dark ? 0.3 : 0.06), radius: 4, x: 0, y: 2)
             }
             
             // Email options

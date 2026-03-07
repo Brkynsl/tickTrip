@@ -77,6 +77,10 @@ struct MyTripView: View {
                 }
                 .refreshable {
                     viewModel.tripManager.fetchTrips()
+                    viewModel.syncProgressWithTrips()
+                }
+                .onAppear {
+                    viewModel.syncProgressWithTrips()
                 }
             }
             .background(TTColors.backgroundPrimary.ignoresSafeArea())

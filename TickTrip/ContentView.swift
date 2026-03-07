@@ -16,6 +16,13 @@ struct RootView: View {
         }
         .animation(.easeInOut(duration: 0.4), value: authManager.isAuthenticated)
         .animation(.easeInOut(duration: 0.4), value: appState.hasCompletedOnboarding)
+        .onChange(of: authManager.isAuthenticated) { _, isAuth in
+            if isAuth {
+                // After login, fetch all user data from Firebase
+                TripManager.shared.fetchTrips()
+                ProgressManager.shared.fetchUserProgress()
+            }
+        }
     }
 }
 
@@ -59,6 +66,15 @@ struct MainTabView: View {
                 }
                 .tag(AppTab.profile)
         }
-        .tint(TTColors.primary)
+        .tint(TTColors.foxOrange)
+        .onAppear {
+            // Sync trip progress with checked places when tab view appears
+            tripVM.syncProgressWithTrips()
+        }
+        .onChange(of: appState.selectedTab) { _, newTab in
+            if newTab == .myTrip {
+                tripVM.syncProgressWithTrips()
+            }
+        }
     }
 }

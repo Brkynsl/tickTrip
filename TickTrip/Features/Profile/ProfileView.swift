@@ -186,11 +186,11 @@ struct ProfileView: View {
                 .padding(.horizontal, 16)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                statCard(value: "\(viewModel.user.totalPlacesCompleted)", label: "places_label".localized, icon: "checkmark.circle.fill", color: TTColors.foxOrange)
-                statCard(value: "\(viewModel.user.totalCitiesVisited)", label: "cities_label".localized, icon: "building.2.fill", color: TTColors.secondaryFallback)
-                statCard(value: "\(viewModel.user.totalCountriesVisited)", label: "countries_label".localized, icon: "globe.americas.fill", color: TTColors.success)
+                statCard(value: "\(viewModel.totalPlaces)", label: "places_label".localized, icon: "checkmark.circle.fill", color: TTColors.foxOrange)
+                statCard(value: "\(viewModel.totalCities)", label: "cities_label".localized, icon: "building.2.fill", color: TTColors.secondaryFallback)
+                statCard(value: "\(viewModel.totalCountries)", label: "countries_label".localized, icon: "globe.americas.fill", color: TTColors.success)
                 statCard(value: "\(viewModel.user.totalTipsShared)", label: "tips_label".localized, icon: "bubble.left.fill", color: TTColors.info)
-                statCard(value: "2", label: "trips_label".localized, icon: "suitcase.fill", color: TTColors.warning)
+                statCard(value: "\(TripManager.shared.trips.count)", label: "trips_label".localized, icon: "suitcase.fill", color: TTColors.warning)
                 statCard(value: "\(viewModel.unlockedAchievements.count)", label: "badges_label".localized, icon: "star.fill", color: TTColors.premiumGold)
             }
             .padding(.horizontal, 16)
@@ -575,9 +575,9 @@ struct EditProfileView: View {
 
 // MARK: - Settings Detail Views
 struct NotificationsSettingsView: View {
-    @State private var pushEnabled = true
-    @State private var tripReminders = true
-    @State private var communityLikes = true
+    @AppStorage("pushEnabled") private var pushEnabled = true
+    @AppStorage("tripReminders") private var tripReminders = true
+    @AppStorage("communityLikes") private var communityLikes = true
     
     var body: some View {
         List {
@@ -595,8 +595,8 @@ struct NotificationsSettingsView: View {
 }
 
 struct PrivacySettingsView: View {
-    @State private var profilePublic = true
-    @State private var showTrips = true
+    @AppStorage("profilePublic") private var profilePublic = true
+    @AppStorage("showTrips") private var showTrips = true
     
     var body: some View {
         List {

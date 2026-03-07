@@ -7,7 +7,7 @@ actor ProgressService {
     static let shared = ProgressService()
     
     private let db = Firestore.firestore()
-    private let collectionName = "progress" // "progress/{userId}_places"
+    private let collectionName = "progress"
     
     private init() {}
     
@@ -24,7 +24,21 @@ actor ProgressService {
         let docRef = db.collection(collectionName).document(userId)
         
         let updateData: [String: Any] = [
+            "id": userId,
             "visitedPlaceIds": isCompleted ? FieldValue.arrayUnion([placeId]) : FieldValue.arrayRemove([placeId]),
+            "updatedAt": FieldValue.serverTimestamp()
+        ]
+        
+        try await docRef.setData(updateData, merge: true)
+    }
+    
+    /// Update completed cities and countries arrays
+    func updateCityCountryProgress(userId: String, completedCityIds: [String], completedCountryIds: [String]) async throws {
+        let docRef = db.collection(collectionName).document(userId)
+        
+        let updateData: [String: Any] = [
+            "completedCityIds": completedCityIds,
+            "completedCountryIds": completedCountryIds,
             "updatedAt": FieldValue.serverTimestamp()
         ]
         

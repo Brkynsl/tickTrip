@@ -15,14 +15,62 @@ struct TTColors {
     static let foxOrange = Color(hue: 0.07, saturation: 0.85, brightness: 0.92)
     static let foxDark = Color(hue: 0.07, saturation: 0.90, brightness: 0.45)
     
-    static let backgroundPrimary = Color(red: 0.98, green: 0.97, blue: 0.95) // Warm off-white
-    static let backgroundSecondary = Color(red: 0.96, green: 0.95, blue: 0.93)
-    static let cardBackground = Color.white
-    static let cardShadow = Color.black.opacity(0.06)
+    // Adaptive colors for dark mode support
+    static var backgroundPrimary: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.08, green: 0.08, blue: 0.10, alpha: 1.0)
+                : UIColor(red: 0.98, green: 0.97, blue: 0.95, alpha: 1.0)
+        })
+    }
     
-    static let textPrimary = Color(red: 0.12, green: 0.12, blue: 0.14)
-    static let textSecondary = Color(red: 0.45, green: 0.45, blue: 0.48)
-    static let textTertiary = Color(red: 0.65, green: 0.65, blue: 0.67)
+    static var backgroundSecondary: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.14, green: 0.14, blue: 0.16, alpha: 1.0)
+                : UIColor(red: 0.96, green: 0.95, blue: 0.93, alpha: 1.0)
+        })
+    }
+    
+    static var cardBackground: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.16, green: 0.16, blue: 0.18, alpha: 1.0)
+                : UIColor.white
+        })
+    }
+    
+    static var cardShadow: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor.clear
+                : UIColor.black.withAlphaComponent(0.06)
+        })
+    }
+    
+    static var textPrimary: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
+                : UIColor(red: 0.12, green: 0.12, blue: 0.14, alpha: 1.0)
+        })
+    }
+    
+    static var textSecondary: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.70, green: 0.70, blue: 0.72, alpha: 1.0)
+                : UIColor(red: 0.45, green: 0.45, blue: 0.48, alpha: 1.0)
+        })
+    }
+    
+    static var textTertiary: Color {
+        Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.50, green: 0.50, blue: 0.52, alpha: 1.0)
+                : UIColor(red: 0.65, green: 0.65, blue: 0.67, alpha: 1.0)
+        })
+    }
     
     static let success = Color(hue: 0.38, saturation: 0.70, brightness: 0.65)
     static let warning = Color(hue: 0.10, saturation: 0.75, brightness: 0.90)

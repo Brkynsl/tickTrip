@@ -24,6 +24,7 @@ struct TickTripApp: App {
     @StateObject private var authManager = AuthManager()
     @StateObject private var appState = AppState()
     @ObservedObject private var localizationManager = LocalizationManager.shared
+    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var body: some Scene {
         WindowGroup {
@@ -32,6 +33,7 @@ struct TickTripApp: App {
                 .environmentObject(appState)
                 .environmentObject(localizationManager)
                 .localizable()
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 }

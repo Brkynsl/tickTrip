@@ -11,7 +11,7 @@ class ExploreViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var showAddFeedback = false
     
-    let progressManager = ProgressManager()
+    let progressManager = ProgressManager.shared
     let tripManager = TripManager.shared
     
     enum SortOption: String, CaseIterable {
@@ -86,6 +86,29 @@ class MyTripViewModel: ObservableObject {
     
     var trips: [Trip] { tripManager.trips }
     var activeTrip: Trip? { tripManager.activeTrip }
+    
+    /// Sync trip cityProgress with ProgressManager data
+    func syncProgressWithTrips() {
+        let progressManager = ProgressManager.shared
+        for i in 0..<tripManager.trips.count {
+            for j in 0..<tripManager.trips[i].cityProgress.count {
+                let cityId = tripManager.trips[i].cityProgress[j].cityId
+                let cityPlaces = Place.places(for: cityId)
+                let completedForCity = cityPlaces.filter { progressManager.completedPlaces.contains($0.id) }.map { $0.id }
+                
+                tripManager.trips[i].cityProgress[j].completedPlaceIds = completedForCity
+                tripManager.trips[i].cityProgress[j].completionPercentage =
+                    cityPlaces.isEmpty ? 0 : Double(completedForCity.count) / Double(cityPlaces.count)
+                tripManager.trips[i].cityProgress[j].isCompleted =
+                    !cityPlaces.isEmpty && completedForCity.count == cityPlaces.count
+            }
+        }
+        // Update activeTrip reference
+        if let activeId = tripManager.activeTrip?.id,
+           let updated = tripManager.trips.first(where: { $0.id == activeId }) {
+            tripManager.activeTrip = updated
+        }
+    }
 }
 
 class SocialViewModel: ObservableObject {
@@ -125,6 +148,7 @@ class CommunityViewModel: ObservableObject {
     @Published var newTipContent = ""
     @Published var newTipType: CommunityPost.PostType = .tip
     @Published var isLoading = false
+    @Published var errorMessage: String? = nil
     
     enum SortOption: String, CaseIterable {
         case popular = "Most Useful"
@@ -166,15 +190,17 @@ class CommunityViewModel: ObservableObject {
                 }
             } catch {
                 print("Error fetching community posts: \(error.localizedDescription)")
-                await MainActor.run { 
+                await MainActor.run {
+                    // Load sample data as fallback
+                    if self.posts.isEmpty {
+                        self.posts = CommunityPost.samples
+                    }
                     self.isLoading = false
-                    self.errorMessage = error.localizedDescription
+                    self.errorMessage = nil // Don't show error if we have fallback data
                 }
             }
         }
     }
-    
-    @Published var errorMessage: String? = nil
     
     func toggleLike(_ postId: String) {
         guard let index = posts.firstIndex(where: { $0.id == postId }), 
@@ -195,7 +221,6 @@ class CommunityViewModel: ObservableObject {
             posts[index].isSaved.toggle()
             posts[index].savesCount += posts[index].isSaved ? 1 : -1
             HapticManager.shared.selection()
-            // Future implementation: Add to User's saved posts array in Firestore
         }
     }
     
@@ -237,12 +262,11 @@ class ProfileViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
     
-    // Inject Progress Manager to calculate real stats
-    private var progressManager = ProgressManager()
+    // Use shared ProgressManager for real stats
+    private var progressManager = ProgressManager.shared
     
     init() {
         if let currentUser = Auth.auth().currentUser {
-            // Just basic fallback, usually managed by state syncing in App
             user.id = currentUser.uid
             user.email = currentUser.email ?? ""
             user.displayName = currentUser.displayName ?? "Traveler"
@@ -278,6 +302,11 @@ class ProfileViewModel: ObservableObject {
         }.count
         return asiaTotal > 0 ? Double(asiaVisited) / Double(asiaTotal) : 0
      }
+    
+    /// Real stats from ProgressManager
+    var totalPlaces: Int { progressManager.completedPlaces.count }
+    var totalCities: Int { progressManager.completedCities.count }
+    var totalCountries: Int { progressManager.completedCountries.count }
     
     func updateProfile(displayName: String, username: String, bio: String) {
         isLoading = true
