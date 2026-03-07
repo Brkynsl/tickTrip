@@ -76,8 +76,17 @@ class ProgressManager: ObservableObject {
             HapticManager.shared.checkPlace()
             triggerFoxReaction(placeId: placeId, cityId: cityId)
             
+            let placeName = Place.places(for: cityId).first(where: { $0.id == placeId })?.name ?? placeId
+            let userName = Auth.auth().currentUser?.displayName ?? "Traveler"
+            
             Task {
                 try? await ProgressService.shared.togglePlaceCompletion(userId: userId, placeId: placeId, isCompleted: true)
+                // Log activity for global feed
+                try? await ActivityService.shared.logActivity(
+                    userId: userId, userName: userName,
+                    placeId: placeId, placeName: placeName,
+                    cityId: cityId, countryId: countryId
+                )
             }
             
             // Check if city is now completed after checking this place

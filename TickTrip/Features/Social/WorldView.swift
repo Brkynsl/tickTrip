@@ -38,6 +38,12 @@ struct WorldView: View {
                     }
                 }
             }
+            .onAppear {
+                viewModel.fetchAll()
+            }
+            .refreshable {
+                viewModel.fetchAll()
+            }
         }
     }
     
@@ -97,173 +103,196 @@ struct WorldView: View {
         .padding(.horizontal, 16)
     }
     
-    // MARK: - Trending
+    // MARK: - Trending (Real Data)
     private var trendingSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             SectionHeader(title: "trending_destinations".localized)
                 .padding(.horizontal, 16)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 14) {
-                    ForEach(viewModel.trendingCountries) { country in
-                        VStack(spacing: 10) {
-                            Text(country.flagEmoji)
-                                .font(.system(size: 44))
-                                .padding(16)
-                                .background(
-                                    Circle().fill(TTColors.backgroundSecondary)
-                                )
-                            
-                            Text(country.name)
-                                .font(TTTypography.labelMedium)
-                                .foregroundStyle(TTColors.textPrimary)
-                            
-                            HStack(spacing: 2) {
-                                Image(systemName: "flame.fill")
-                                    .font(.system(size: 10))
-                                Text("hot_badge".localized)
-                                    .font(TTTypography.captionSmall)
+            if viewModel.isLoading {
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 30)
+            } else {
+                // Trending cities - tap to open checklist
+                ForEach(viewModel.trendingCities, id: \.city.id) { item in
+                    NavigationLink(destination: CityChecklistView(city: item.city, countryId: item.country.id)) {
+                        HStack(spacing: 14) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .fill(TTColors.tealGradient)
+                                    .frame(width: 56, height: 56)
+                                
+                                Text(item.country.flagEmoji)
+                                    .font(.system(size: 24))
                             }
-                            .foregroundStyle(TTColors.foxOrange)
-                        }
-                    }
-                }
-                .padding(.horizontal, 16)
-            }
-            
-            // Featured cities
-            SectionHeader(title: "popular_cities".localized)
-                .padding(.horizontal, 16)
-            
-            ForEach(["Paris", "Rome", "Barcelona", "Istanbul", "London"], id: \.self) { cityName in
-                if let city = City.samples.first(where: { $0.name == cityName }),
-                   let country = Country.samples.first(where: { $0.id == city.countryId }) {
-                    HStack(spacing: 14) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .fill(TTColors.tealGradient)
-                                .frame(width: 56, height: 56)
                             
-                            Text(country.flagEmoji)
-                                .font(.system(size: 24))
-                        }
-                        
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(city.name)
-                                .font(TTTypography.titleMedium)
-                                .foregroundStyle(TTColors.textPrimary)
+                            VStack(alignment: .leading, spacing: 4) {
+                                HStack(spacing: 6) {
+                                    Text(item.city.name)
+                                        .font(TTTypography.titleMedium)
+                                        .foregroundStyle(TTColors.textPrimary)
+                                    
+                                    HStack(spacing: 2) {
+                                        Image(systemName: "flame.fill")
+                                            .font(.system(size: 9))
+                                        Text("Trending")
+                                            .font(TTTypography.badgeFont)
+                                    }
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 3)
+                                    .background(TTColors.foxOrange.gradient)
+                                    .clipShape(Capsule())
+                                }
+                                
+                                Text("\(item.city.totalPlaces) konum • \(item.country.name)")
+                                    .font(TTTypography.captionLarge)
+                                    .foregroundStyle(TTColors.textSecondary)
+                            }
                             
-                            Text("must_see_format".localized(city.totalPlaces, country.name))
-                                .font(TTTypography.captionLarge)
-                                .foregroundStyle(TTColors.textSecondary)
-                        }
-                        
-                        Spacer()
-                        
-                        VStack(spacing: 2) {
-                            Text("\(city.popularityScore)")
-                                .font(TTTypography.titleSmall)
-                                .foregroundStyle(TTColors.foxOrange)
-                            Text("score_label".localized)
-                                .font(TTTypography.captionSmall)
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 14))
                                 .foregroundStyle(TTColors.textTertiary)
                         }
+                        .ttCard(padding: 14)
+                        .padding(.horizontal, 16)
                     }
-                    .ttCard(padding: 14)
-                    .padding(.horizontal, 16)
+                    .buttonStyle(.plain)
                 }
             }
         }
     }
     
-    // MARK: - Activity
+    // MARK: - Activity (Real Data)
     private var activitySection: some View {
         VStack(alignment: .leading, spacing: 16) {
             SectionHeader(title: "recent_completions".localized)
                 .padding(.horizontal, 16)
             
-            ForEach(viewModel.recentCompletions, id: \.userName) { item in
-                HStack(spacing: 14) {
-                    Circle()
-                        .fill(TTColors.primaryGradient)
-                        .frame(width: 44, height: 44)
-                        .overlay(
-                            Text(String(item.userName.prefix(1)))
-                                .font(TTTypography.titleMedium)
-                                .foregroundStyle(.white)
-                        )
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(spacing: 4) {
-                            Text(item.userName)
-                                .font(TTTypography.titleSmall)
-                                .foregroundStyle(TTColors.textPrimary)
+            if viewModel.isLoading {
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 30)
+            } else if viewModel.recentActivities.isEmpty {
+                EmptyStateView(
+                    icon: "person.2",
+                    title: "Henüz Aktivite Yok",
+                    message: "Checklist'lerden yer işaretlemeye başlayın!",
+                    foxMessage: "İlk keşfini yap! 🦊"
+                )
+                .frame(minHeight: 300)
+            } else {
+                ForEach(viewModel.recentActivities) { activity in
+                    NavigationLink(destination: UserProfileView(userId: activity.userId, userName: activity.userName)) {
+                        HStack(spacing: 14) {
+                            Circle()
+                                .fill(TTColors.primaryGradient)
+                                .frame(width: 44, height: 44)
+                                .overlay(
+                                    Text(String(activity.userName.prefix(1)))
+                                        .font(TTTypography.titleMedium)
+                                        .foregroundStyle(.white)
+                                )
                             
-                            Text("checked_label".localized)
-                                .font(TTTypography.bodySmall)
-                                .foregroundStyle(TTColors.textSecondary)
+                            VStack(alignment: .leading, spacing: 4) {
+                                HStack(spacing: 4) {
+                                    Text(activity.userName)
+                                        .font(TTTypography.titleSmall)
+                                        .foregroundStyle(TTColors.textPrimary)
+                                    
+                                    Text("ziyaret etti")
+                                        .font(TTTypography.bodySmall)
+                                        .foregroundStyle(TTColors.textSecondary)
+                                }
+                                
+                                HStack(spacing: 4) {
+                                    Text(activity.countryFlag)
+                                    Text("\(activity.placeName), \(activity.cityName)")
+                                        .font(TTTypography.bodySmall)
+                                        .foregroundStyle(TTColors.foxOrange)
+                                }
+                            }
+                            
+                            Spacer()
+                            
+                            Text(activity.timestamp, style: .relative)
+                                .font(TTTypography.captionSmall)
+                                .foregroundStyle(TTColors.textTertiary)
                         }
-                        
-                        Text("place_in_city_format".localized(item.placeName, item.cityName))
-                            .font(TTTypography.bodySmall)
-                            .foregroundStyle(TTColors.foxOrange)
+                        .ttCard(padding: 14)
+                        .padding(.horizontal, 16)
                     }
-                    
-                    Spacer()
-                    
-                    Text(item.timeAgo)
-                        .font(TTTypography.captionSmall)
-                        .foregroundStyle(TTColors.textTertiary)
+                    .buttonStyle(.plain)
                 }
-                .ttCard(padding: 14)
-                .padding(.horizontal, 16)
             }
         }
     }
     
-    // MARK: - Leaderboard
+    // MARK: - Leaderboard (Real Data)
     private var leaderboardSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             SectionHeader(title: "top_explorers".localized)
                 .padding(.horizontal, 16)
             
-            ForEach(viewModel.leaderboard, id: \.rank) { entry in
-                HStack(spacing: 14) {
-                    // Rank
-                    ZStack {
-                        Circle()
-                            .fill(rankGradient(entry.rank))
-                            .frame(width: 40, height: 40)
-                        
-                        Text("#\(entry.rank)")
-                            .font(TTTypography.titleSmall)
-                            .foregroundStyle(.white)
-                    }
+            if viewModel.isLoading {
+                ProgressView()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 30)
+            } else if viewModel.leaderboard.isEmpty {
+                EmptyStateView(
+                    icon: "trophy",
+                    title: "Liderlik Tablosu Boş",
+                    message: "İlk keşfedici siz olun!",
+                    foxMessage: "Yer işaretleyerek liderlik tablosunda yerinizi alın! 🏆"
+                )
+                .frame(minHeight: 300)
+            } else {
+                ForEach(Array(viewModel.leaderboard.enumerated()), id: \.element.id) { index, entry in
+                    let rank = index + 1
                     
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(entry.name)
-                            .font(TTTypography.titleMedium)
-                            .foregroundStyle(TTColors.textPrimary)
-                        
-                        Text(entry.title)
-                            .font(TTTypography.captionLarge)
-                            .foregroundStyle(TTColors.foxOrange)
+                    NavigationLink(destination: UserProfileView(userId: entry.id, userName: entry.userName)) {
+                        HStack(spacing: 14) {
+                            // Rank
+                            ZStack {
+                                Circle()
+                                    .fill(rankGradient(rank))
+                                    .frame(width: 40, height: 40)
+                                
+                                Text("#\(rank)")
+                                    .font(TTTypography.titleSmall)
+                                    .foregroundStyle(.white)
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(entry.userName)
+                                    .font(TTTypography.titleMedium)
+                                    .foregroundStyle(TTColors.textPrimary)
+                                
+                                Text("\(entry.totalCities) şehir • \(entry.totalCountries) ülke")
+                                    .font(TTTypography.captionLarge)
+                                    .foregroundStyle(TTColors.foxOrange)
+                            }
+                            
+                            Spacer()
+                            
+                            VStack(alignment: .trailing, spacing: 4) {
+                                Text("\(entry.totalPlaces)")
+                                    .font(TTTypography.titleMedium)
+                                    .foregroundStyle(TTColors.textPrimary)
+                                
+                                Text("yer")
+                                    .font(TTTypography.captionSmall)
+                                    .foregroundStyle(TTColors.textTertiary)
+                            }
+                        }
+                        .ttCard(padding: 14)
+                        .padding(.horizontal, 16)
                     }
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .trailing, spacing: 4) {
-                        Text("\(entry.places)")
-                            .font(TTTypography.titleMedium)
-                            .foregroundStyle(TTColors.textPrimary)
-                        
-                        Text("countries_count_format".localized(entry.countries))
-                            .font(TTTypography.captionSmall)
-                            .foregroundStyle(TTColors.textTertiary)
-                    }
+                    .buttonStyle(.plain)
                 }
-                .ttCard(padding: 14)
-                .padding(.horizontal, 16)
             }
         }
     }

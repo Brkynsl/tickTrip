@@ -139,21 +139,9 @@ class MyTripViewModel: ObservableObject {
 }
 
 class SocialViewModel: ObservableObject {
-    @Published var trendingCountries: [Country] = Array(Country.samples.filter { $0.isTrending })
-    @Published var recentCompletions: [(userName: String, placeName: String, cityName: String, timeAgo: String)] = [
-        ("Sofia M.", "Colosseum", "Rome", "2h ago"),
-        ("James K.", "Eiffel Tower", "Paris", "4h ago"),
-        ("Ahmet Y.", "Hagia Sophia", "Istanbul", "6h ago"),
-        ("Anna S.", "Sagrada Família", "Barcelona", "8h ago"),
-        ("Claire D.", "Tower of London", "London", "12h ago"),
-    ]
-    @Published var leaderboard: [(rank: Int, name: String, title: String, places: Int, countries: Int)] = [
-        (1, "WorldRunner", "World Nomad", 234, 18),
-        (2, "Sofia M.", "Europe Ambassador", 189, 12),
-        (3, "TravelMax", "City Collector", 156, 9),
-        (4, "James K.", "Italy Ambassador", 134, 7),
-        (5, "WanderLena", "Europe Explorer", 112, 6),
-    ]
+    @Published var trendingCityIds: [String] = []
+    @Published var recentActivities: [ActivityService.Activity] = []
+    @Published var leaderboard: [ActivityService.LeaderboardEntry] = []
     @Published var selectedSection: SocialSection = .trending
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
@@ -162,6 +150,48 @@ class SocialViewModel: ObservableObject {
         case trending = "Trending"
         case activity = "Activity"
         case leaderboard = "Leaderboard"
+    }
+    
+    var trendingCities: [(city: City, country: Country)] {
+        trendingCityIds.compactMap { cityId in
+            guard let city = City.samples.first(where: { $0.id == cityId }),
+                  let country = Country.samples.first(where: { $0.id == city.countryId })
+            else { return nil }
+            return (city, country)
+        }
+    }
+    
+    func fetchAll() {
+        isLoading = true
+        Task {
+            do {
+                async let trendingResult = ActivityService.shared.fetchTrendingCityIds(limit: 10)
+                async let activitiesResult = ActivityService.shared.fetchRecentActivities(limit: 20)
+                async let leaderboardResult = ActivityService.shared.fetchLeaderboard(limit: 20)
+                
+                let (trending, activities, board) = try await (trendingResult, activitiesResult, leaderboardResult)
+                
+                await MainActor.run {
+                    self.trendingCityIds = trending
+                    self.recentActivities = activities
+                    self.leaderboard = board
+                    self.isLoading = false
+                    
+                    // If empty, seed with defaults
+                    if self.trendingCityIds.isEmpty {
+                        self.trendingCityIds = ["rome", "paris", "barcelona", "istanbul", "london"]
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.isLoading = false
+                    // Fallback trending
+                    if self.trendingCityIds.isEmpty {
+                        self.trendingCityIds = ["rome", "paris", "barcelona", "istanbul", "london"]
+                    }
+                }
+            }
+        }
     }
 }
 

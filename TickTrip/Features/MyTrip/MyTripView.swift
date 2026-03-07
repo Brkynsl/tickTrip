@@ -33,12 +33,17 @@ struct MyTripView: View {
                                 ForEach(activeTrip.cityIds, id: \.self) { cityId in
                                     if let city = City.samples.first(where: { $0.id == cityId }) {
                                         let cityProgress = activeTrip.cityProgress.first(where: { $0.cityId == cityId })
-                                        TripCityRow(
-                                            city: city,
-                                            isActive: cityId == activeTrip.currentCityId,
-                                            completedCount: cityProgress?.completedPlaceIds.count ?? 0,
-                                            totalCount: city.totalPlaces
-                                        )
+                                        let countryId = city.countryId
+                                        
+                                        NavigationLink(destination: CityChecklistView(city: city, countryId: countryId)) {
+                                            TripCityRow(
+                                                city: city,
+                                                isActive: cityId == activeTrip.currentCityId,
+                                                completedCount: cityProgress?.completedPlaceIds.count ?? 0,
+                                                totalCount: city.totalPlaces
+                                            )
+                                        }
+                                        .buttonStyle(.plain)
                                     }
                                 }
                             }
