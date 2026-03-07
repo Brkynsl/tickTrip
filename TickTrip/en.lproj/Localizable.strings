@@ -1,0 +1,241 @@
+/* TickTrip — English (Base Language) */
+
+/* === App === */
+"app_name" = "TickTrip";
+
+/* === Tabs === */
+"explore_tab" = "Explore";
+"my_trip_tab" = "My Trip";
+"world_tab" = "World";
+"community_tab" = "Community";
+"profile_tab" = "Profile";
+
+/* === Welcome / Auth === */
+"welcome_tagline" = "Track the world. Complete every city.";
+"welcome_subtitle" = "Don't leave without checking the essentials.";
+"continue_with_apple" = "Continue with Apple";
+"continue_with_google" = "Continue with Google";
+"sign_up" = "Sign Up";
+"log_in" = "Log In";
+"welcome_back" = "Welcome back!";
+"sign_in_continue" = "Sign in to continue your journey";
+"join_adventure" = "Join the adventure!";
+"create_account_subtitle" = "Create your account to start exploring";
+"email_label" = "Email";
+"email_placeholder" = "your@email.com";
+"password_label" = "Password";
+"password_placeholder" = "Enter your password";
+"password_min_chars" = "Min 8 characters";
+"confirm_password_label" = "Confirm Password";
+"confirm_password_placeholder" = "Re-enter password";
+"display_name_label" = "Display Name";
+"display_name_placeholder" = "Your name";
+"forgot_password" = "Forgot Password?";
+"create_account" = "Create Account";
+"email_invalid" = "Please enter a valid email";
+"passwords_dont_match" = "Passwords don't match";
+"agree_to_terms_prefix" = "I agree to the ";
+"terms_of_service" = "Terms of Service";
+"and" = " and ";
+"privacy_policy" = "Privacy Policy";
+"legal_prefix" = "By continuing, you agree to our";
+"or_divider" = "or";
+"error_title" = "Error";
+"ok" = "OK";
+"something_went_wrong" = "Something went wrong";
+"reset_password" = "Reset Password";
+"email_sent" = "Email Sent!";
+"reset_email_instruction" = "Enter your email and we'll send you a reset link.";
+"check_email_instruction" = "Check your email for a password reset link.";
+"send_reset_link" = "Send Reset Link";
+"back_to_login" = "Back to Login";
+"fox_reset_unsent" = "No worries, we'll help you! 🦊";
+"fox_reset_sent" = "Check your inbox! 📬";
+
+/* === Onboarding === */
+"skip" = "Skip";
+"next" = "Next";
+"get_started" = "Get Started";
+"personalize_journey" = "Personalize Your Journey";
+"personalize_subtitle" = "Help us tailor your experience";
+"favorite_regions" = "Favorite Regions";
+"travel_style" = "Travel Style";
+"start_exploring" = "Start Exploring";
+"skip_for_now" = "Skip for now";
+
+"onboarding_title_1" = "Discover Cities";
+"onboarding_subtitle_1" = "Explore the world";
+"onboarding_desc_1" = "Browse countries and cities with beautiful checklist cards. Every destination has its own must-see list.";
+"onboarding_title_2" = "Complete Places";
+"onboarding_subtitle_2" = "Never miss the essentials";
+"onboarding_desc_2" = "Check off famous attractions, hidden gems, and local favorites. Track your progress in real time.";
+"onboarding_title_3" = "Earn Titles";
+"onboarding_subtitle_3" = "Become a world explorer";
+"onboarding_desc_3" = "Unlock achievements like 'Rome Explorer' and 'Europe Ambassador'. Build your traveler identity.";
+"onboarding_title_4" = "Community Tips";
+"onboarding_subtitle_4" = "Learn from fellow travelers";
+"onboarding_desc_4" = "Get local tips, food recommendations, and photo spots from a place-based community.";
+"onboarding_title_5" = "Your Fox Companion";
+"onboarding_subtitle_5" = "Meet your travel buddy";
+"onboarding_desc_5" = "Your explorer fox will celebrate your progress, encourage you, and make sure you don't miss anything!";
+
+"region_europe" = "Europe";
+"region_asia" = "Asia";
+"region_north_america" = "North America";
+"region_south_america" = "South America";
+"region_africa" = "Africa";
+"region_oceania" = "Oceania";
+
+/* === Explore === */
+"your_world_awaits" = "Your World Awaits";
+"countries_cities_format" = "%d countries • %d cities";
+"search_countries" = "Search countries...";
+"search_cities" = "Search cities...";
+"filter_all" = "All";
+"sort_popular" = "Popular";
+"sort_az" = "A-Z";
+"sort_progress" = "Progress";
+"no_countries_found" = "No countries found";
+"try_different_search" = "Try a different search or filter";
+"fox_no_countries" = "Hmm, that destination isn't available yet! 🦊";
+"country_progress" = "Country Progress";
+"cities_format" = "%d cities";
+"complete_format" = "%d%% complete";
+"trending_badge" = "Trending";
+"cities_visited_format" = "%d cities • %d visited";
+
+/* === City Detail === */
+"places_format" = "%d/%d";
+"must_see_places" = "Must-See Places";
+"places_total_format" = "%d total";
+"add_to_trip" = "Add to Trip";
+"map" = "Map";
+"tips" = "Tips";
+"coming_soon" = "Coming soon!";
+"places_curated_format" = "Places for %@ are being curated";
+"fox_preparing_format" = "I'm preparing the best spots in %@! 🦊";
+
+/* === My Trip === */
+"active_trip" = "Active Trip";
+"trip_cities" = "Trip Cities";
+"active_label" = "ACTIVE";
+"current_label" = "Current";
+"no_active_trip" = "No Active Trip";
+"no_trip_message" = "Create your first trip to start tracking your adventure!";
+"fox_plan_trip" = "Ready for an adventure? Let's plan a trip! 🧳";
+"create_trip" = "Create Trip";
+"all_trips" = "All Trips";
+"see_all" = "See All";
+"new_trip" = "New Trip";
+"cancel" = "Cancel";
+"name_your_trip" = "Name Your Trip";
+"trip_name_placeholder" = "e.g. Italian Dream, Euro Tour 2025";
+"trip_visibility" = "Trip Visibility";
+"select_countries" = "Select Countries";
+"select_cities" = "Select Cities";
+"places_count_format" = "%d places";
+"set_active_trip" = "Set as Active Trip";
+"add_city" = "Add City";
+"fox_plan_exciting" = "Let's plan something exciting! 🌍";
+"back" = "Back";
+
+/* === World / Social === */
+"explore_the_world" = "Explore the World";
+"world_subtitle" = "See what travelers are discovering";
+"section_trending" = "Trending";
+"section_activity" = "Activity";
+"section_leaderboard" = "Leaderboard";
+"trending_destinations" = "🔥 Trending Destinations";
+"hot_badge" = "Hot";
+"popular_cities" = "🏙️ Popular Cities";
+"must_see_format" = "%d must-see places • %@";
+"score_label" = "score";
+"recent_completions" = "🌟 Recent Completions";
+"checked_label" = "checked";
+"place_in_city_format" = "%@ in %@";
+"top_explorers" = "🏆 Top Explorers";
+"countries_count_format" = "%d countries";
+
+/* === Community === */
+"travel_tips" = "Travel Tips";
+"community_subtitle" = "Share your knowledge with travelers";
+"no_tips_yet" = "No tips yet";
+"be_first_tip" = "Be the first to share your knowledge!";
+"fox_needs_wisdom" = "This spot needs your travel wisdom! 🦊";
+"write_a_tip" = "Write a Tip";
+"sort_most_useful" = "Most Useful";
+"sort_newest" = "Newest";
+"sort_trending" = "Trending";
+"new_tip" = "New Tip";
+"tip_type_label" = "Tip Type";
+"city_label" = "City";
+"select_city" = "Select a city";
+"your_tip_label" = "Your Tip";
+"community_guidelines" = "Community Guidelines";
+"guidelines_text" = "Be respectful, relevant, and helpful. No spam, offensive, or promotional content.";
+"share_tip" = "Share Tip";
+"fox_share_wisdom" = "Share your travel wisdom! 🦊";
+
+/* === Profile === */
+"world_progress" = "World Progress";
+"travel_stats" = "Travel Stats";
+"places_label" = "Places";
+"cities_label" = "Cities";
+"countries_label" = "Countries";
+"tips_label" = "Tips";
+"trips_label" = "Trips";
+"badges_label" = "Badges";
+"achievements_title" = "Achievements";
+"titles_label" = "Titles";
+"day_streak_format" = "%d day streak";
+"sign_out" = "Sign Out";
+"settings_title" = "Settings";
+"notifications" = "Notifications";
+"privacy" = "Privacy";
+"appearance" = "Appearance";
+"help_support" = "Help & Support";
+"version_format" = "Version %@";
+"done" = "Done";
+"account_section" = "Account";
+"edit_profile" = "Edit Profile";
+"change_password" = "Change Password";
+"linked_accounts" = "Linked Accounts";
+"preferences_section" = "Preferences";
+"privacy_settings" = "Privacy Settings";
+"travel_preferences" = "Travel Preferences";
+"about_section" = "About";
+"language_settings" = "Language";
+"system_default" = "System Default";
+
+/* === Premium / Paywall === */
+"explorer_pro" = "Explorer Pro";
+"unlock_full_world" = "Unlock the full world of travel";
+"start_exploring_pro" = "Start Exploring Pro";
+"restore_purchases" = "Restore Purchases";
+"best_value" = "BEST VALUE";
+"subscription_legal" = "Subscription automatically renews unless canceled at least 24 hours before the end of the current period.";
+"terms_short" = "Terms";
+"privacy_short" = "Privacy";
+"premium_unlock_message" = "Unlock all destinations, unlimited trips, and more";
+
+/* === Fox Messages === */
+"fox_message_welcome" = "Welcome to TickTrip! 🦊";
+"fox_message_encourage" = "Keep going, you're almost there! 🦊";
+"fox_message_city_complete" = "Amazing! You've completed this city! 🎉🦊";
+"fox_message_title_unlocked" = "Incredible! You've unlocked a new title! 🏆🦊";
+"fox_message_trip_start" = "Your adventure begins now! Let's explore! 🌍🦊";
+"fox_message_half_done" = "Halfway there! The best spots are still ahead! 🦊";
+"fox_message_first_check" = "Your first check-in! Many more to come! ✅🦊";
+"fox_message_streak" = "You're on fire! Keep the streak alive! 🔥🦊";
+
+/* === Gamification === */
+"title_unlocked" = "Title Unlocked!";
+"achievement_unlocked" = "Achievement Unlocked!";
+
+/* === Misc === */
+"places_remaining_format" = "%d places remaining";
+"place_completed" = "Place completed!";
+"progress_label" = "Progress";
+"completed_label" = "Completed:";
+"mark_completed_label" = "Mark as completed";
+"age_restriction" = "This app is intended for users aged 18 and older.";

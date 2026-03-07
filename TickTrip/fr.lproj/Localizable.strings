@@ -1,0 +1,237 @@
+/* TickTrip — Français */
+
+/* === App === */
+"app_name" = "TickTrip";
+
+/* === Tabs === */
+"explore_tab" = "Explorer";
+"my_trip_tab" = "Mon Voyage";
+"world_tab" = "Monde";
+"community_tab" = "Communauté";
+"profile_tab" = "Profil";
+
+/* === Welcome / Auth === */
+"welcome_tagline" = "Parcourez le monde. Complétez chaque ville.";
+"welcome_subtitle" = "Ne partez pas sans avoir coché l'essentiel.";
+"continue_with_apple" = "Continuer avec Apple";
+"continue_with_google" = "Continuer avec Google";
+"sign_up" = "S'inscrire";
+"log_in" = "Se connecter";
+"welcome_back" = "Content de vous revoir !";
+"sign_in_continue" = "Connectez-vous pour continuer votre voyage";
+"join_adventure" = "Rejoignez l'aventure !";
+"create_account_subtitle" = "Créez votre compte pour commencer à explorer";
+"email_label" = "E-mail";
+"email_placeholder" = "votre@email.com";
+"password_label" = "Mot de passe";
+"password_placeholder" = "Entrez votre mot de passe";
+"password_min_chars" = "8 caractères minimum";
+"confirm_password_label" = "Confirmer le mot de passe";
+"confirm_password_placeholder" = "Ressaisissez le mot de passe";
+"display_name_label" = "Nom d'affichage";
+"display_name_placeholder" = "Votre nom";
+"forgot_password" = "Mot de passe oublié ?";
+"create_account" = "Créer un Compte";
+"email_invalid" = "Veuillez entrer un e-mail valide";
+"passwords_dont_match" = "Les mots de passe ne correspondent pas";
+"agree_to_terms_prefix" = "J'accepte les ";
+"terms_of_service" = "Conditions d'utilisation";
+"and" = " et ";
+"privacy_policy" = "Politique de confidentialité";
+"legal_prefix" = "En continuant, vous acceptez nos";
+"or_divider" = "ou";
+"error_title" = "Erreur";
+"ok" = "OK";
+"something_went_wrong" = "Une erreur est survenue";
+"reset_password" = "Réinitialiser le mot de passe";
+"email_sent" = "E-mail envoyé !";
+"reset_email_instruction" = "Entrez votre e-mail et nous vous enverrons un lien de réinitialisation.";
+"check_email_instruction" = "Vérifiez votre e-mail pour le lien de réinitialisation.";
+"send_reset_link" = "Envoyer le lien";
+"back_to_login" = "Retour à la connexion";
+"fox_reset_unsent" = "Pas de souci, on va t'aider ! 🦊";
+"fox_reset_sent" = "Vérifie ta boîte de réception ! 📬";
+
+/* === Onboarding === */
+"skip" = "Passer";
+"next" = "Suivant";
+"get_started" = "Commencer";
+"personalize_journey" = "Personnalisez votre Voyage";
+"personalize_subtitle" = "Aidez-nous à adapter votre expérience";
+"favorite_regions" = "Régions Favorites";
+"travel_style" = "Style de Voyage";
+"start_exploring" = "Commencer l'Exploration";
+"skip_for_now" = "Passer pour l'instant";
+"onboarding_title_1" = "Découvrir des Villes";
+"onboarding_subtitle_1" = "Explorer le monde";
+"onboarding_desc_1" = "Parcourez pays et villes avec de superbes cartes checklist. Chaque destination a sa propre liste incontournable.";
+"onboarding_title_2" = "Compléter des Lieux";
+"onboarding_subtitle_2" = "Ne manquez rien d'essentiel";
+"onboarding_desc_2" = "Cochez des attractions célèbres, des trésors cachés et des favoris locaux. Suivez votre progression en temps réel.";
+"onboarding_title_3" = "Gagner des Titres";
+"onboarding_subtitle_3" = "Devenez un explorateur du monde";
+"onboarding_desc_3" = "Débloquez des succès comme 'Explorateur de Rome' et 'Ambassadeur d'Europe'. Construisez votre identité de voyageur.";
+"onboarding_title_4" = "Conseils Communautaires";
+"onboarding_subtitle_4" = "Apprenez des autres voyageurs";
+"onboarding_desc_4" = "Obtenez des conseils locaux, des recommandations culinaires et des spots photo d'une communauté basée sur les lieux.";
+"onboarding_title_5" = "Votre Compagnon Renard";
+"onboarding_subtitle_5" = "Rencontrez votre compagnon de voyage";
+"onboarding_desc_5" = "Votre renard explorateur célébrera votre progression, vous encouragera et s'assurera que vous ne manquez rien !";
+"region_europe" = "Europe";
+"region_asia" = "Asie";
+"region_north_america" = "Amérique du Nord";
+"region_south_america" = "Amérique du Sud";
+"region_africa" = "Afrique";
+"region_oceania" = "Océanie";
+
+/* === Explore === */
+"your_world_awaits" = "Votre Monde vous Attend";
+"countries_cities_format" = "%d pays • %d villes";
+"search_countries" = "Chercher des pays...";
+"search_cities" = "Chercher des villes...";
+"filter_all" = "Tous";
+"sort_popular" = "Populaire";
+"sort_az" = "A-Z";
+"sort_progress" = "Progression";
+"no_countries_found" = "Aucun pays trouvé";
+"try_different_search" = "Essayez une autre recherche ou filtre";
+"fox_no_countries" = "Hmm, cette destination n'est pas encore disponible ! 🦊";
+"country_progress" = "Progression du Pays";
+"cities_format" = "%d villes";
+"complete_format" = "%d%% complété";
+"trending_badge" = "Tendance";
+"cities_visited_format" = "%d villes • %d visitées";
+"places_format" = "%d/%d";
+"must_see_places" = "Lieux Incontournables";
+"places_total_format" = "%d au total";
+"add_to_trip" = "Ajouter au Voyage";
+"map" = "Carte";
+"tips" = "Conseils";
+"coming_soon" = "Bientôt !";
+"places_curated_format" = "Les lieux de %@ sont en cours de sélection";
+"fox_preparing_format" = "Je prépare les meilleurs spots à %@ ! 🦊";
+
+/* === My Trip === */
+"active_trip" = "Voyage Actif";
+"trip_cities" = "Villes du Voyage";
+"active_label" = "ACTIF";
+"current_label" = "Actuel";
+"no_active_trip" = "Pas de Voyage Actif";
+"no_trip_message" = "Créez votre premier voyage pour commencer à suivre votre aventure !";
+"fox_plan_trip" = "Prêt pour une aventure ? Planifions un voyage ! 🧳";
+"create_trip" = "Créer un Voyage";
+"all_trips" = "Tous les Voyages";
+"see_all" = "Tout Voir";
+"new_trip" = "Nouveau Voyage";
+"cancel" = "Annuler";
+"name_your_trip" = "Nommez votre Voyage";
+"trip_name_placeholder" = "ex. Rêve Italien, Euro Tour 2025";
+"trip_visibility" = "Visibilité du Voyage";
+"select_countries" = "Sélectionner des Pays";
+"select_cities" = "Sélectionner des Villes";
+"places_count_format" = "%d lieux";
+"set_active_trip" = "Définir comme Voyage Actif";
+"add_city" = "Ajouter une Ville";
+"fox_plan_exciting" = "Planifions quelque chose d'excitant ! 🌍";
+"back" = "Retour";
+
+/* === World / Social === */
+"explore_the_world" = "Explorer le Monde";
+"world_subtitle" = "Découvrez ce que les voyageurs explorent";
+"section_trending" = "Tendances";
+"section_activity" = "Activité";
+"section_leaderboard" = "Classement";
+"trending_destinations" = "🔥 Destinations Tendance";
+"hot_badge" = "Hot";
+"popular_cities" = "🏙️ Villes Populaires";
+"must_see_format" = "%d lieux incontournables • %@";
+"score_label" = "points";
+"recent_completions" = "🌟 Complétions Récentes";
+"checked_label" = "a visité";
+"place_in_city_format" = "%@ à %@";
+"top_explorers" = "🏆 Top Explorateurs";
+"countries_count_format" = "%d pays";
+
+/* === Community === */
+"travel_tips" = "Conseils de Voyage";
+"community_subtitle" = "Partagez votre savoir avec les voyageurs";
+"no_tips_yet" = "Pas encore de conseils";
+"be_first_tip" = "Soyez le premier à partager votre savoir !";
+"fox_needs_wisdom" = "Cet endroit a besoin de votre sagesse de voyageur ! 🦊";
+"write_a_tip" = "Écrire un Conseil";
+"sort_most_useful" = "Plus Utiles";
+"sort_newest" = "Plus Récents";
+"sort_trending" = "Tendances";
+"new_tip" = "Nouveau Conseil";
+"tip_type_label" = "Type de Conseil";
+"city_label" = "Ville";
+"select_city" = "Sélectionner une ville";
+"your_tip_label" = "Votre Conseil";
+"community_guidelines" = "Règles de la Communauté";
+"guidelines_text" = "Soyez respectueux, pertinent et utile. Pas de spam, contenu offensant ou promotionnel.";
+"share_tip" = "Partager le Conseil";
+"fox_share_wisdom" = "Partagez votre sagesse de voyageur ! 🦊";
+
+/* === Profile === */
+"world_progress" = "Progression Mondiale";
+"travel_stats" = "Statistiques de Voyage";
+"places_label" = "Lieux";
+"cities_label" = "Villes";
+"countries_label" = "Pays";
+"tips_label" = "Conseils";
+"trips_label" = "Voyages";
+"badges_label" = "Badges";
+"achievements_title" = "Succès";
+"titles_label" = "Titres";
+"day_streak_format" = "Série de %d jours";
+"sign_out" = "Se Déconnecter";
+"settings_title" = "Paramètres";
+"notifications" = "Notifications";
+"privacy" = "Confidentialité";
+"appearance" = "Apparence";
+"help_support" = "Aide & Support";
+"version_format" = "Version %@";
+"done" = "Terminé";
+"account_section" = "Compte";
+"edit_profile" = "Modifier le Profil";
+"change_password" = "Changer le Mot de Passe";
+"linked_accounts" = "Comptes Liés";
+"preferences_section" = "Préférences";
+"privacy_settings" = "Paramètres de Confidentialité";
+"travel_preferences" = "Préférences de Voyage";
+"about_section" = "À Propos";
+"language_settings" = "Langue";
+"system_default" = "Par défaut du système";
+
+/* === Premium / Paywall === */
+"explorer_pro" = "Explorer Pro";
+"unlock_full_world" = "Débloquez le monde complet du voyage";
+"start_exploring_pro" = "Démarrer Explorer Pro";
+"restore_purchases" = "Restaurer les Achats";
+"best_value" = "MEILLEUR CHOIX";
+"subscription_legal" = "L'abonnement se renouvelle automatiquement sauf annulation au moins 24 heures avant la fin de la période en cours.";
+"terms_short" = "CGU";
+"privacy_short" = "Confidentialité";
+"premium_unlock_message" = "Débloquez toutes les destinations, voyages illimités et plus";
+
+/* === Fox Messages === */
+"fox_message_welcome" = "Bienvenue sur TickTrip ! 🦊";
+"fox_message_encourage" = "Continue, tu y es presque ! 🦊";
+"fox_message_city_complete" = "Incroyable ! Tu as complété cette ville ! 🎉🦊";
+"fox_message_title_unlocked" = "Incroyable ! Tu as débloqué un nouveau titre ! 🏆🦊";
+"fox_message_trip_start" = "Ton aventure commence maintenant ! Explorons ! 🌍🦊";
+"fox_message_half_done" = "À mi-chemin ! Les meilleurs spots sont encore devant toi ! 🦊";
+"fox_message_first_check" = "Ton premier check-in ! Beaucoup d'autres à venir ! ✅🦊";
+"fox_message_streak" = "Tu es en feu ! Continue la série ! 🔥🦊";
+
+/* === Gamification === */
+"title_unlocked" = "Titre débloqué !";
+"achievement_unlocked" = "Succès débloqué !";
+
+/* === Misc === */
+"places_remaining_format" = "%d lieux restants";
+"place_completed" = "Lieu complété !";
+"progress_label" = "Progression";
+"completed_label" = "Complété :";
+"mark_completed_label" = "Marquer comme complété";
+"age_restriction" = "Cette application est destinée aux utilisateurs de 18 ans et plus.";

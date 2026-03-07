@@ -1,0 +1,266 @@
+/* TickTrip — Türkçe */
+
+/* === App === */
+"app_name" = "TickTrip";
+
+/* === Tabs === */
+"explore_tab" = "Keşfet";
+"my_trip_tab" = "Tatilim";
+"world_tab" = "Dünya";
+"community_tab" = "Topluluk";
+"profile_tab" = "Profil";
+
+/* === Welcome / Auth === */
+"welcome_tagline" = "Dünyayı takip et. Her şehri tamamla.";
+"welcome_subtitle" = "Olmazsa olmazları işaretlemeden ayrılma.";
+"continue_with_apple" = "Apple ile Devam Et";
+"continue_with_google" = "Google ile Devam Et";
+"sign_up" = "Kayıt Ol";
+"log_in" = "Giriş Yap";
+"welcome_back" = "Tekrar hoş geldin!";
+"sign_in_continue" = "Yolculuğuna devam etmek için giriş yap";
+"join_adventure" = "Maceraya katıl!";
+"create_account_subtitle" = "Keşfetmeye başlamak için hesabını oluştur";
+"email_label" = "E-posta";
+"email_placeholder" = "senin@email.com";
+"password_label" = "Şifre";
+"password_placeholder" = "Şifreni gir";
+"password_min_chars" = "En az 8 karakter";
+"confirm_password_label" = "Şifreyi Onayla";
+"confirm_password_placeholder" = "Şifreyi tekrar gir";
+"display_name_label" = "Görünen Ad";
+"display_name_placeholder" = "Adın";
+"forgot_password" = "Şifremi Unuttum";
+"create_account" = "Hesap Oluştur";
+"email_invalid" = "Lütfen geçerli bir e-posta gir";
+"passwords_dont_match" = "Şifreler eşleşmiyor";
+"agree_to_terms_prefix" = "Kabul ediyorum: ";
+"terms_of_service" = "Kullanım Koşulları";
+"and" = " ve ";
+"privacy_policy" = "Gizlilik Politikası";
+"legal_prefix" = "Devam ederek şunları kabul edersin:";
+"or_divider" = "veya";
+"error_title" = "Hata";
+"ok" = "Tamam";
+"something_went_wrong" = "Bir şeyler yanlış gitti";
+"reset_password" = "Şifre Sıfırla";
+"email_sent" = "E-posta Gönderildi!";
+"reset_email_instruction" = "E-postanı gir, sana sıfırlama bağlantısı gönderelim.";
+"check_email_instruction" = "Şifre sıfırlama bağlantısı için e-postanı kontrol et.";
+"send_reset_link" = "Bağlantı Gönder";
+"back_to_login" = "Girişe Dön";
+"fox_reset_unsent" = "Merak etme, sana yardım edeceğiz! 🦊";
+"fox_reset_sent" = "Gelen kutunu kontrol et! 📬";
+
+/* === Onboarding === */
+"skip" = "Atla";
+"next" = "İleri";
+"get_started" = "Başla";
+"personalize_journey" = "Yolculuğunu Kişiselleştir";
+"personalize_subtitle" = "Deneyimini özelleştirmemize yardım et";
+"favorite_regions" = "Favori Bölgeler";
+"travel_style" = "Seyahat Tarzı";
+"start_exploring" = "Keşfetmeye Başla";
+"skip_for_now" = "Şimdilik atla";
+"onboarding_title_1" = "Şehirleri Keşfet";
+"onboarding_subtitle_1" = "Dünyayı keşfet";
+"onboarding_desc_1" = "Ülkelere ve şehirlere güzel kontrol listesi kartlarıyla göz at. Her destinasyonun kendi görülmesi gereken listesi var.";
+"onboarding_title_2" = "Yerleri Tamamla";
+"onboarding_subtitle_2" = "Olmazsa olmazları kaçırma";
+"onboarding_desc_2" = "Ünlü mekanları, gizli hazineleri ve yerel favorileri işaretle. İlerlemeni gerçek zamanlı takip et.";
+"onboarding_title_3" = "Unvanlar Kazan";
+"onboarding_subtitle_3" = "Dünya kaşifi ol";
+"onboarding_desc_3" = "'Roma Kaşifi' ve 'Avrupa Elçisi' gibi başarıları aç. Gezgin kimliğini oluştur.";
+"onboarding_title_4" = "Topluluk İpuçları";
+"onboarding_subtitle_4" = "Diğer gezginlerden öğren";
+"onboarding_desc_4" = "Yer tabanlı bir topluluktan yerel ipuçları, yemek önerileri ve fotoğraf noktaları al.";
+"onboarding_title_5" = "Tilki Arkadaşın";
+"onboarding_subtitle_5" = "Seyahat arkadaşınla tanış";
+"onboarding_desc_5" = "Kaşif tilkin ilerlemenizi kutlayacak, sizi cesaretlendirecek ve hiçbir şeyi kaçırmamanızı sağlayacak!";
+"region_europe" = "Avrupa";
+"region_asia" = "Asya";
+"region_north_america" = "Kuzey Amerika";
+"region_south_america" = "Güney Amerika";
+"region_africa" = "Afrika";
+"region_oceania" = "Okyanusya";
+
+/* === Explore === */
+"your_world_awaits" = "Dünyan Seni Bekliyor";
+"countries_cities_format" = "%d ülke • %d şehir";
+"search_countries" = "Ülke ara...";
+"search_cities" = "Şehir ara...";
+"filter_all" = "Tümü";
+"sort_popular" = "Popüler";
+"sort_az" = "A-Z";
+"sort_progress" = "İlerleme";
+"no_countries_found" = "Ülke bulunamadı";
+"try_different_search" = "Farklı bir arama veya filtre dene";
+"fox_no_countries" = "Hmm, bu destinasyon henüz mevcut değil! 🦊";
+"country_progress" = "Ülke İlerlemesi";
+"cities_format" = "%d şehir";
+"complete_format" = "%%%d tamamlandı";
+"trending_badge" = "Trend";
+"cities_visited_format" = "%d şehir • %d ziyaret edildi";
+"places_format" = "%d/%d";
+"must_see_places" = "Görülmesi Gereken Yerler";
+"places_total_format" = "%d toplam";
+"add_to_trip" = "Tatile Ekle";
+"map" = "Harita";
+"tips" = "İpuçları";
+"coming_soon" = "Yakında!";
+"places_curated_format" = "%@ için yerler hazırlanıyor";
+"fox_preparing_format" = "%@ için en iyi noktaları hazırlıyorum! 🦊";
+"city_added_to_trip" = "Şehir tatile eklendi!";
+"no_active_trip_error" = "Önce aktif bir tatil oluşturmalısın.";
+
+/* === My Trip === */
+"active_trip" = "Aktif Tatil";
+"trip_cities" = "Tatil Şehirleri";
+"active_label" = "AKTİF";
+"current_label" = "Mevcut";
+"no_active_trip" = "Aktif Tatil Yok";
+"no_trip_message" = "Maceranı takip etmeye başlamak için ilk tatilini oluştur!";
+"fox_plan_trip" = "Maceraya hazır mısın? Hadi bir tatil planlayalım! 🧳";
+"create_trip" = "Tatil Oluştur";
+"all_trips" = "Tüm Tatiller";
+"see_all" = "Tümünü Gör";
+"new_trip" = "Yeni Tatil";
+"cancel" = "İptal";
+"name_your_trip" = "Tatiline İsim Ver";
+"trip_name_placeholder" = "ör. İtalyan Rüyası, Avrupa Turu 2025";
+"trip_visibility" = "Tatil Görünürlüğü";
+"select_countries" = "Ülke Seç";
+"select_cities" = "Şehir Seç";
+"places_count_format" = "%d yer";
+"set_active_trip" = "Aktif Tatil Olarak Ayarla";
+"add_city" = "Şehir Ekle";
+"delete_trip" = "Tatili Sil";
+"delete_trip_confirm_title" = "Tatili Sil?";
+"delete_trip_confirm_message" = "Bu tatili silmek istediğinden emin misin? Bu işlem geri alınamaz.";
+"fox_plan_exciting" = "Heyecan verici bir şey planlayalım! 🌍";
+"back" = "Geri";
+
+/* === World / Social === */
+"explore_the_world" = "Dünyayı Keşfet";
+"world_subtitle" = "Gezginlerin neler keşfettiğini gör";
+"section_trending" = "Trend";
+"section_activity" = "Aktivite";
+"section_leaderboard" = "Sıralama";
+"trending_destinations" = "🔥 Trend Destinasyonlar";
+"hot_badge" = "Popüler";
+"popular_cities" = "🏙️ Popüler Şehirler";
+"must_see_format" = "%d görülecek yer • %@";
+"score_label" = "puan";
+"recent_completions" = "🌟 Son Tamamlananlar";
+"checked_label" = "ziyaret etti";
+"place_in_city_format" = "%@ - %@";
+"top_explorers" = "🏆 En İyi Kaşifler";
+"countries_count_format" = "%d ülke";
+
+/* === Community === */
+"travel_tips" = "Seyahat İpuçları";
+"community_subtitle" = "Gezginlerle bilgini paylaş";
+"no_tips_yet" = "Henüz ipucu yok";
+"be_first_tip" = "Bilgini paylaşan ilk kişi ol!";
+"fox_needs_wisdom" = "Bu yerin senin seyahat bilgine ihtiyacı var! 🦊";
+"write_a_tip" = "İpucu Yaz";
+"sort_most_useful" = "En Faydalı";
+"sort_newest" = "En Yeni";
+"sort_trending" = "Trend";
+"new_tip" = "Yeni İpucu";
+"tip_type_label" = "İpucu Türü";
+"city_label" = "Şehir";
+"select_city" = "Bir şehir seç";
+"your_tip_label" = "İpucun";
+"community_guidelines" = "Topluluk Kuralları";
+"guidelines_text" = "Saygılı, konuyla ilgili ve yardımcı ol. Spam, saldırgan veya tanıtım içeriği yasaktır.";
+"share_tip" = "İpucu Paylaş";
+"fox_share_wisdom" = "Seyahat bilgini paylaş! 🦊";
+
+/* === Profile === */
+"world_progress" = "Dünya İlerlemesi";
+"travel_stats" = "Seyahat İstatistikleri";
+"places_label" = "Yerler";
+"cities_label" = "Şehirler";
+"countries_label" = "Ülkeler";
+"tips_label" = "İpuçları";
+"trips_label" = "Tatiller";
+"badges_label" = "Rozetler";
+"achievements_title" = "Başarılar";
+"titles_label" = "Unvanlar";
+"day_streak_format" = "%d gün seri";
+"sign_out" = "Çıkış Yap";
+"settings_title" = "Ayarlar";
+"notifications" = "Bildirimler";
+"privacy" = "Gizlilik";
+"appearance" = "Görünüm";
+"help_support" = "Yardım & Destek";
+"version_format" = "Sürüm %@";
+"done" = "Tamam";
+"account_section" = "Hesap";
+"edit_profile" = "Profili Düzenle";
+"change_password" = "Şifre Değiştir";
+"linked_accounts" = "Bağlı Hesaplar";
+"preferences_section" = "Tercihler";
+"privacy_settings" = "Gizlilik Ayarları";
+"travel_preferences" = "Seyahat Tercihleri";
+"about_section" = "Hakkında";
+"language_settings" = "Dil";
+"system_default" = "Sistem Varsayılanı";
+"change_photo" = "Fotoğrafı Değiştir";
+"username_label" = "Kullanıcı Adı";
+"username_placeholder" = "kullanici_adi";
+"bio_label" = "Hakkında";
+"save_changes" = "Değişiklikleri Kaydet";
+"notification_channels" = "Bildirim Kanalları";
+"notification_types" = "Bildirim Türleri";
+"push_notifications" = "Anlık Bildirimler";
+"trip_reminders" = "Tatil Hatırlatıcıları";
+"community_likes" = "Topluluk Etkileşimleri";
+"profile_visibility" = "Profil Görünürlüğü";
+"public_profile" = "Herkese Açık Profil";
+"show_my_trips" = "Tatillerimi Göster";
+"blocked_users" = "Engellenen Kullanıcılar";
+"manage_blocked" = "Engellenenleri Yönet";
+"theme_label" = "Tema";
+"dark_mode" = "Karanlık Mod";
+"connected_label" = "Bağlı";
+"connect_label" = "Bağla";
+"current_password_placeholder" = "Mevcut şifre";
+"new_password_placeholder" = "Yeni şifre";
+"confirm_password_placeholder" = "Yeni şifre (tekrar)";
+"update_password" = "Şifreyi Güncelle";
+"appearance_settings" = "Görünüm Ayarları";
+
+/* === Premium / Paywall === */
+"explorer_pro" = "Explorer Pro";
+"unlock_full_world" = "Seyahatin tüm dünyasını aç";
+"start_exploring_pro" = "Explorer Pro'yu Başlat";
+"restore_purchases" = "Satın Almaları Geri Yükle";
+"best_value" = "EN İYİ DEĞER";
+"subscription_legal" = "Abonelik, mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik olarak yenilenir.";
+"terms_short" = "Koşullar";
+"privacy_short" = "Gizlilik";
+"premium_unlock_message" = "Tüm destinasyonları, sınırsız tatilleri ve daha fazlasını aç";
+
+/* === Fox Messages === */
+"fox_message_welcome" = "TickTrip'e hoş geldin! 🦊";
+"fox_message_encourage" = "Devam et, neredeyse tamam! 🦊";
+"fox_message_city_complete" = "Harika! Bu şehri tamamladın! 🎉🦊";
+"fox_message_title_unlocked" = "İnanılmaz! Yeni bir unvan açtın! 🏆🦊";
+"fox_message_trip_start" = "Maceran şimdi başlıyor! Hadi keşfedelim! 🌍🦊";
+"fox_message_half_done" = "Yarı yoldasın! En iyi yerler hâlâ önünde! 🦊";
+"fox_message_first_check" = "İlk işaretlemen! Daha çok gelecek! ✅🦊";
+"fox_message_streak" = "Ateştesin! Seriyi devam ettir! 🔥🦊";
+
+/* === Gamification === */
+"title_unlocked" = "Yeni Unvan Açıldı!";
+"achievement_unlocked" = "Başarı Açıldı!";
+
+/* === Misc === */
+"places_remaining_format" = "%d yer kaldı";
+"place_completed" = "Yer tamamlandı!";
+"progress_label" = "İlerleme";
+"completed_label" = "Tamamlandı:";
+"mark_completed_label" = "Tamamlandı olarak işaretle";
+"age_restriction" = "Bu uygulama 18 yaş ve üzeri kullanıcılara yöneliktir.";
