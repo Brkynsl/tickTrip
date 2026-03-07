@@ -61,11 +61,13 @@
 
 ## 📸 Screenshots
 
-| Explore | My Trip | Profile |
+| Welcome | Explore | My Trip |
 | :---: | :---: | :---: |
-| ![Explore](Media/mockup.png) | ![My Trip](Media/mockup.png) | ![Profile](Media/mockup.png) |
+| ![Welcome](Media/ss_welcome.png) | ![Explore](Media/ss_explore.png) | ![My Trip](Media/ss_mytrip.png) |
 
-*(Note: Mockups used for demonstration. Real screenshots can be added here.)*
+| World | Community | Profile |
+| :---: | :---: | :---: |
+| ![World](Media/ss_world.png) | ![Community](Media/ss_community.png) | ![Profile](Media/ss_profile.png) |
 
 ## 🌍 Localization
 
