@@ -50,4 +50,8 @@ actor CommunityService {
         
         try await docRef.updateData(updateData)
     }
+    
+    func deletePost(postId: String) async throws {
+        try await db.collection(collectionName).document(postId).delete()
+    }
 }

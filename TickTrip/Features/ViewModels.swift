@@ -84,29 +84,56 @@ class MyTripViewModel: ObservableObject {
     @Published var selectedCountries: Set<String> = []
     @Published var selectedCities: Set<String> = []
     
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        // Forward TripManager changes to this ViewModel so SwiftUI views update
+        tripManager.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
+            .store(in: &cancellables)
+        
+        // Forward ProgressManager changes too
+        ProgressManager.shared.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.syncProgressWithTrips()
+            }
+            .store(in: &cancellables)
+    }
+    
     var trips: [Trip] { tripManager.trips }
     var activeTrip: Trip? { tripManager.activeTrip }
     
     /// Sync trip cityProgress with ProgressManager data
     func syncProgressWithTrips() {
         let progressManager = ProgressManager.shared
+        var changed = false
         for i in 0..<tripManager.trips.count {
             for j in 0..<tripManager.trips[i].cityProgress.count {
                 let cityId = tripManager.trips[i].cityProgress[j].cityId
                 let cityPlaces = Place.places(for: cityId)
                 let completedForCity = cityPlaces.filter { progressManager.completedPlaces.contains($0.id) }.map { $0.id }
                 
-                tripManager.trips[i].cityProgress[j].completedPlaceIds = completedForCity
-                tripManager.trips[i].cityProgress[j].completionPercentage =
-                    cityPlaces.isEmpty ? 0 : Double(completedForCity.count) / Double(cityPlaces.count)
-                tripManager.trips[i].cityProgress[j].isCompleted =
-                    !cityPlaces.isEmpty && completedForCity.count == cityPlaces.count
+                if tripManager.trips[i].cityProgress[j].completedPlaceIds != completedForCity {
+                    tripManager.trips[i].cityProgress[j].completedPlaceIds = completedForCity
+                    tripManager.trips[i].cityProgress[j].completionPercentage =
+                        cityPlaces.isEmpty ? 0 : Double(completedForCity.count) / Double(cityPlaces.count)
+                    tripManager.trips[i].cityProgress[j].isCompleted =
+                        !cityPlaces.isEmpty && completedForCity.count == cityPlaces.count
+                    changed = true
+                }
             }
         }
-        // Update activeTrip reference
-        if let activeId = tripManager.activeTrip?.id,
-           let updated = tripManager.trips.first(where: { $0.id == activeId }) {
-            tripManager.activeTrip = updated
+        if changed {
+            // Update activeTrip reference
+            if let activeId = tripManager.activeTrip?.id,
+               let updated = tripManager.trips.first(where: { $0.id == activeId }) {
+                tripManager.activeTrip = updated
+            }
+            objectWillChange.send()
         }
     }
 }
@@ -246,6 +273,22 @@ class CommunityViewModel: ObservableObject {
         
         Task {
             try? await CommunityService.shared.savePost(newPost)
+        }
+    }
+    
+    func deletePost(_ postId: String) {
+        guard let index = posts.firstIndex(where: { $0.id == postId }) else { return }
+        let post = posts[index]
+        
+        // Only allow deleting own posts
+        guard let userId = Auth.auth().currentUser?.uid,
+              post.userId == userId else { return }
+        
+        posts.remove(at: index)
+        HapticManager.shared.notification(.warning)
+        
+        Task {
+            try? await CommunityService.shared.deletePost(postId: postId)
         }
     }
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseAuth
 
 struct CommunityView: View {
     @ObservedObject var viewModel: CommunityViewModel
@@ -218,6 +219,12 @@ struct CommunityView: View {
 struct CommunityPostCard: View {
     let post: CommunityPost
     @ObservedObject var viewModel: CommunityViewModel
+    @State private var showDeleteAlert = false
+    
+    private var isOwnPost: Bool {
+        guard let userId = FirebaseAuth.Auth.auth().currentUser?.uid else { return false }
+        return post.userId == userId
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -251,6 +258,20 @@ struct CommunityPostCard: View {
                     .padding(.vertical, 4)
                     .background(TTColors.foxOrange.opacity(0.1))
                     .clipShape(Capsule())
+                
+                // Delete menu for own posts
+                if isOwnPost {
+                    Menu {
+                        Button(role: .destructive, action: { showDeleteAlert = true }) {
+                            Label("Delete Post", systemImage: "trash")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .font(.system(size: 14))
+                            .foregroundStyle(TTColors.textTertiary)
+                            .padding(6)
+                    }
+                }
             }
             
             // Place tag
@@ -292,6 +313,14 @@ struct CommunityPostCard: View {
             }
         }
         .ttCard()
+        .alert("Delete Post?", isPresented: $showDeleteAlert) {
+            Button("Delete", role: .destructive) {
+                viewModel.deletePost(post.id)
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This post will be permanently deleted.")
+        }
     }
 }
 

@@ -42,6 +42,11 @@ struct WelcomeView: View {
                     .frame(minHeight: UIScreen.main.bounds.height - 60)
                 }
             }
+            .background(
+                colorScheme == .dark
+                    ? Color(hue: 0.08, saturation: 0.25, brightness: 0.12)
+                    : Color(hue: 0.08, saturation: 0.15, brightness: 0.98)
+            )
             .navigationDestination(isPresented: $showLogin) {
                 LoginView()
             }
