@@ -8,7 +8,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let settings = FirestoreSettings()
-        settings.isPersistenceEnabled = true // Enable offline persistence
+        settings.cacheSettings = PersistentCacheSettings() // Enable offline persistence
         let db = Firestore.firestore()
         db.settings = settings
         

@@ -21,20 +21,17 @@ class TripManager: ObservableObject {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
         isLoading = true
-        Task {
+        Task { @MainActor [weak self] in
+            guard let self = self else { return }
             do {
                 let fetchedTrips = try await TripService.shared.fetchTrips(userId: userId)
-                DispatchQueue.main.async {
-                    self.trips = fetchedTrips
-                    self.activeTrip = fetchedTrips.first { $0.status == .active } ?? fetchedTrips.first
-                    self.isLoading = false
-                }
+                self.trips = fetchedTrips
+                self.activeTrip = fetchedTrips.first { $0.status == .active } ?? fetchedTrips.first
+                self.isLoading = false
             } catch {
                 print("Error loading trips: \(error.localizedDescription)")
-                DispatchQueue.main.async { 
-                    self.isLoading = false
-                    self.errorMessage = error.localizedDescription
-                }
+                self.isLoading = false
+                self.errorMessage = error.localizedDescription
             }
         }
     }
