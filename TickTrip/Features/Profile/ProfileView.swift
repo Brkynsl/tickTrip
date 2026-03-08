@@ -679,10 +679,22 @@ struct ChangePasswordView: View {
     @State private var currentPassword = ""
     @State private var newPassword = ""
     @State private var confirmPassword = ""
+    @State private var errorMessage: String?
+    @State private var showSuccess = false
+    @State private var isLoading = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                if let error = errorMessage {
+                    Text(error)
+                        .font(TTTypography.labelMedium)
+                        .foregroundStyle(TTColors.error)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
+                
                 SecureField("current_password_placeholder".localized, text: $currentPassword)
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal)
@@ -695,14 +707,70 @@ struct ChangePasswordView: View {
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal)
                 
-                GradientButton(title: "update_password".localized, icon: "lock.fill") {
-                    // Update password logic
+                if isLoading {
+                    ProgressView()
+                        .padding()
+                } else {
+                    GradientButton(title: "update_password".localized, icon: "lock.fill") {
+                        updatePassword()
+                    }
+                    .padding()
                 }
-                .padding()
             }
             .padding(.top)
         }
         .navigationTitle("change_password".localized)
+        .alert("Success", isPresented: $showSuccess) {
+            Button("OK", role: .cancel) {
+                dismiss()
+            }
+        } message: {
+            Text("Password updated successfully.")
+        }
+    }
+    
+    private func updatePassword() {
+        guard !currentPassword.isEmpty else {
+            errorMessage = "Please enter your current password."
+            return
+        }
+        guard newPassword.count >= 8 else {
+            errorMessage = "New password must be at least 8 characters."
+            return
+        }
+        guard newPassword == confirmPassword else {
+            errorMessage = "New passwords do not match."
+            return
+        }
+        
+        guard let user = Auth.auth().currentUser, let email = user.email else { return }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        // Re-authenticate user before updating password
+        let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
+        user.reauthenticate(with: credential) { _, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = "Authentication failed: \(error.localizedDescription)"
+                }
+                return
+            }
+            
+            // Proceed to update password
+            user.updatePassword(to: newPassword) { error in
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    if let error = error {
+                        self.errorMessage = error.localizedDescription
+                    } else {
+                        self.showSuccess = true
+                    }
+                }
+            }
+        }
     }
 }
 

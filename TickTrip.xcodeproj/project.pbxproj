@@ -60,6 +60,7 @@
 		01CBD4438BF19C866E2C0DD3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AuthManager.swift; sourceTree = "<group>"; };
 		1337AD270EA09CF17E44BC7E /* TickTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickTripApp.swift; sourceTree = "<group>"; };
 		2059DE2799C436F9ECA0D46F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Colors.swift; sourceTree = "<group>"; };
+		2DDA9D61680397968CD91B96 /* TickTrip.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; name = TickTrip.entitlements; path = TickTrip/TickTrip.entitlements; sourceTree = "<group>"; };
 		33AAD2B23CCBD2A743E1EF5C /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Community/CommunityView.swift; sourceTree = "<group>"; };
 		36F9B558132DC0BB229E1AA6 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/SubscriptionManager.swift; sourceTree = "<group>"; };
 		37B8EA3A365B421F65EEE37B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Typography.swift; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 			children = (
 				A0000000000000000000003 /* TickTrip */,
 				A0000000000000000000010 /* Products */,
+				2DDA9D61680397968CD91B96 /* TickTrip.entitlements */,
 			);
 			sourceTree = "<group>";
 		};
@@ -480,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TickTrip/TickTrip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -507,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TickTrip/TickTrip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -466,6 +466,14 @@ class ProfileViewModel: ObservableObject {
         updatedUser.bio = bio
         
         let finalUser = updatedUser
+        
+        // Update Firebase Auth display name as well
+        if let currentUser = Auth.auth().currentUser {
+            let changeRequest = currentUser.createProfileChangeRequest()
+            changeRequest.displayName = displayName
+            changeRequest.commitChanges { _ in }
+        }
+        
         Task {
             await UserService.shared.saveUser(finalUser)
             await MainActor.run {
