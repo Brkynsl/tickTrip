@@ -71,6 +71,12 @@ struct CityChecklistView: View {
                                 }
                                 .buttonStyle(.plain)
                                 
+                                Image(place.id)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                
                                 VStack(alignment: .leading, spacing: 4) {
                                     HStack(spacing: 6) {
                                         Text(place.name)
@@ -143,16 +149,13 @@ struct CityChecklistView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    // MARK: - City Hero Card
     private var cityHero: some View {
         VStack(spacing: 12) {
-            UnsplashImage(
-                query: "\(city.name) city skyline landmark",
-                width: nil,
-                height: 180,
-                cornerRadius: 16
-            )
-            .frame(maxWidth: .infinity)
+            Image(city.heroImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: .infinity, minHeight: 180, maxHeight: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .padding(.horizontal, 16)
             
             HStack {

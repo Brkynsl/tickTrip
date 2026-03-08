@@ -63,11 +63,11 @@ struct ExploreView: View {
     // MARK: - Hero
     private var heroSection: some View {
         ZStack(alignment: .bottomLeading) {
-            UnsplashImage(
-                query: "world map travel adventure",
-                height: 160,
-                cornerRadius: 20
-            )
+            Image("world_map_hero")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 160)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .fill(Color.black.opacity(0.4))
@@ -194,11 +194,11 @@ struct CountryDetailView: View {
             VStack(spacing: 20) {
                 // Hero header
                 ZStack(alignment: .bottomLeading) {
-                    UnsplashImage(
-                        query: "\(country.name) landscape landmark",
-                        height: 200,
-                        cornerRadius: 20
-                    )
+                    Image(country.heroImageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .overlay(
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .fill(LinearGradient(
@@ -302,11 +302,11 @@ struct CityDetailView: View {
             VStack(spacing: 20) {
                 // Hero
                 ZStack(alignment: .bottomLeading) {
-                    UnsplashImage(
-                        query: "\(city.name) \(city.countryId) city landmark skyline",
-                        height: 220,
-                        cornerRadius: 20
-                    )
+                    Image(city.heroImageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 220)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .overlay(
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .fill(LinearGradient(

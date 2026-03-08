@@ -89,6 +89,14 @@ struct CountryCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            
+            // Hero Image
+            Image(country.heroImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 120)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                
             HStack(spacing: 12) {
                 Text(country.flagEmoji)
                     .font(.system(size: 44))
@@ -147,13 +155,12 @@ struct CityCard: View {
     
     var body: some View {
         HStack(spacing: 14) {
-            // Hero Image via Unsplash
-            UnsplashImage(
-                query: "\(city.name) \(city.countryId) city landmark landscape",
-                width: 72,
-                height: 72,
-                cornerRadius: 12
-            )
+            // Hero Image
+            Image(city.heroImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 72, height: 72)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(city.name)
@@ -224,6 +231,12 @@ struct PlaceCard: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel(isCompleted ? "Completed: \(place.name)" : "Mark \(place.name) as completed")
+            
+            Image(place.id)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 56, height: 56)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 6) {
