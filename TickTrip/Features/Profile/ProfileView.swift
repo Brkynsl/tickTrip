@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel

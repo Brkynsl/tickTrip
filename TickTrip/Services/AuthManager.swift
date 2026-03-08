@@ -268,7 +268,9 @@ class AuthManager: NSObject, ObservableObject, ASAuthorizationControllerDelegate
             }
             
             isLoading = true
-            let credential = OAuthProvider.credential(withProviderID: "apple.com", IDToken: idTokenString, rawNonce: nonce)
+            let credential = OAuthProvider.appleCredential(withIDToken: idTokenString,
+                                                           rawNonce: nonce,
+                                                           fullName: appleIDCredential.fullName)
             
             // Save name if provided (only available on first login)
             if let fullName = appleIDCredential.fullName, let givenName = fullName.givenName {
