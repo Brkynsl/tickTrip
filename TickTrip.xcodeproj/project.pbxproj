@@ -7,104 +7,104 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0038E9054B5B826E150E0CFC /* Models/Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C3FA5381F9817BE93B226 /* Models/Place.swift */; };
-		0395D1BD30620340EB88B731 /* Models/Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B6FD2B98A083D497B367BA /* Models/Achievement.swift */; };
-		16B56EA1799D6E9D3F16FA00 /* Models/City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE99790B193BFDC6A48228F /* Models/City.swift */; };
-		242BFC6536C364D6E481A725 /* Features/Explore/ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1486C155FD6321A56ACE2AE /* Features/Explore/ExploreView.swift */; };
-		2C07F0F06FF25AE0E3B37EBA /* Features/Subscription/PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D7D56D9C0FAFB4286D3643 /* Features/Subscription/PaywallView.swift */; };
-		3684D71D50721500C80C1DEF /* Features/Auth/WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01278C3F3E615C7E0C219668 /* Features/Auth/WelcomeView.swift */; };
-		3B600D77746C8517363466BB /* Core/Extensions/View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F30A3BF1219D3E52663768 /* Core/Extensions/View+Extensions.swift */; };
+		0038E9054B5B826E150E0CFC /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C3FA5381F9817BE93B226 /* Place.swift */; };
+		0395D1BD30620340EB88B731 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B6FD2B98A083D497B367BA /* Achievement.swift */; };
+		16B56EA1799D6E9D3F16FA00 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE99790B193BFDC6A48228F /* City.swift */; };
+		242BFC6536C364D6E481A725 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1486C155FD6321A56ACE2AE /* ExploreView.swift */; };
+		2C07F0F06FF25AE0E3B37EBA /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D7D56D9C0FAFB4286D3643 /* PaywallView.swift */; };
+		3684D71D50721500C80C1DEF /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01278C3F3E615C7E0C219668 /* WelcomeView.swift */; };
+		3B600D77746C8517363466BB /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F30A3BF1219D3E52663768 /* View+Extensions.swift */; };
 		441296CE25DCD344BD011776 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F26ECBDF41D75BF5E58BC /* ActivityService.swift */; };
-		4D7CE563F900B9FE2D567EF1 /* Core/DesignSystem/Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8EA3A365B421F65EEE37B /* Core/DesignSystem/Typography.swift */; };
-		525C1B2C938E48BE0E429B05 /* Core/Utilities/HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AB938F2FAD9198FEAF1CC1 /* Core/Utilities/HapticManager.swift */; };
+		4D7CE563F900B9FE2D567EF1 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B8EA3A365B421F65EEE37B /* Typography.swift */; };
+		525C1B2C938E48BE0E429B05 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AB938F2FAD9198FEAF1CC1 /* HapticManager.swift */; };
 		60E750C83D0B76768B9C56B0 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48B376212EDA8363526B0B /* UserProfileView.swift */; };
-		6EB56006C8B1381F57469273 /* Models/CommunityPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA812091A927A0132092C9 /* Models/CommunityPost.swift */; };
-		769B7CA8353155C5B54AE5F0 /* Models/Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945AA91C90214632B66D9A83 /* Models/Country.swift */; };
-		7C6108BB8A262C49B0648258 /* Services/ProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73374CC078EFB861C38894F7 /* Services/ProgressManager.swift */; };
-		7ECCB2726F2936039893512A /* Features/Auth/LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C54C26FCD8FBEC1D810C0BE /* Features/Auth/LoginView.swift */; };
-		7F93B02666723DC9F0957000 /* Features/ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB0106677C079992214332 /* Features/ViewModels.swift */; };
-		921F180B8DF407AC18192420 /* Models/Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657742D2154CA2EE35ECA715 /* Models/Trip.swift */; };
-		98A62C586DEF06B71375FA25 /* Services/SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F9B558132DC0BB229E1AA6 /* Services/SubscriptionManager.swift */; };
+		6EB56006C8B1381F57469273 /* CommunityPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA812091A927A0132092C9 /* CommunityPost.swift */; };
+		769B7CA8353155C5B54AE5F0 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945AA91C90214632B66D9A83 /* Country.swift */; };
+		7C6108BB8A262C49B0648258 /* ProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73374CC078EFB861C38894F7 /* ProgressManager.swift */; };
+		7ECCB2726F2936039893512A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C54C26FCD8FBEC1D810C0BE /* LoginView.swift */; };
+		7F93B02666723DC9F0957000 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB0106677C079992214332 /* ViewModels.swift */; };
+		921F180B8DF407AC18192420 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657742D2154CA2EE35ECA715 /* Trip.swift */; };
+		98A62C586DEF06B71375FA25 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F9B558132DC0BB229E1AA6 /* SubscriptionManager.swift */; };
 		A0000000000000000000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000011 /* Assets.xcassets */; };
 		A3B9AF472F5C35BF005225A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A3B9AF462F5C35BF005225A6 /* FirebaseAnalytics */; };
 		A3B9AF492F5C35BF005225A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A3B9AF482F5C35BF005225A6 /* FirebaseAuth */; };
 		A3B9AF4B2F5C35BF005225A6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A3B9AF4A2F5C35BF005225A6 /* FirebaseFirestore */; };
 		A3B9AF4D2F5C3899005225A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3B9AF4C2F5C3899005225A6 /* GoogleService-Info.plist */; };
-		A6777163F9120953D0379E25 /* Services/TripManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFE21C9D0D17E7136C2408 /* Services/TripManager.swift */; };
-		B02BD51050C33A1276C5E1C0 /* Services/AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CBD4438BF19C866E2C0DD3 /* Services/AuthManager.swift */; };
+		A6777163F9120953D0379E25 /* TripManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFE21C9D0D17E7136C2408 /* TripManager.swift */; };
+		B02BD51050C33A1276C5E1C0 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CBD4438BF19C866E2C0DD3 /* AuthManager.swift */; };
 		B0C129EB1C5BFDC29F86AE8A /* CityChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CB5DACA3F2B1D4DE6B6EED /* CityChecklistView.swift */; };
 		B27C438ECCB57D5E47109085 /* TickTripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337AD270EA09CF17E44BC7E /* TickTripApp.swift */; };
-		B8A3CDC18307F9554CA62667 /* Features/Onboarding/OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38140F67E56E94C8E944A83 /* Features/Onboarding/OnboardingView.swift */; };
-		BAAE2D130CCA1CE58291EFE3 /* Features/MyTrip/MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF3F04B4A6CB45EE00884BC /* Features/MyTrip/MyTripView.swift */; };
+		B8A3CDC18307F9554CA62667 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38140F67E56E94C8E944A83 /* OnboardingView.swift */; };
+		BAAE2D130CCA1CE58291EFE3 /* MyTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF3F04B4A6CB45EE00884BC /* MyTripView.swift */; };
 		BB877E6FC9F69B9CE81AD1A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8877E54A3C0914740FCDA21 /* ContentView.swift */; };
-		C3E2661014B1C3485058D96F /* Core/DesignSystem/Components/Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957257675BF87477C42BE74 /* Core/DesignSystem/Components/Components.swift */; };
-		COMMSYNC0000000000000001 /* Services/CommunityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = COMMSYNC0000000000000002 /* Services/CommunityService.swift */; };
-		D6316D2B9BD068AE88B66CAB /* Models/User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E19E55733BACB0D313EB80C /* Models/User.swift */; };
-		DB55173C84D22AF4A32DEA19 /* Features/Community/CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAD2B23CCBD2A743E1EF5C /* Features/Community/CommunityView.swift */; };
-		DF00AFEDCB695F1326230A54 /* Core/DesignSystem/Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2059DE2799C436F9ECA0D46F /* Core/DesignSystem/Colors.swift */; };
-		EB597E5111CB241A829CF59E /* Features/Social/WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF46475C13F52AC2BB1E941 /* Features/Social/WorldView.swift */; };
-		F2D8C631944BF9DA4843CA3F /* Features/Profile/ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DFD06CA28AC79F7198A4E /* Features/Profile/ProfileView.swift */; };
-		FIREBASEM000000000000001 /* Core/Utilities/FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FIREBASEM000000000000002 /* Core/Utilities/FirebaseManager.swift */; };
-		L10N00000000000000000001 /* Core/Utilities/LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = L10N00000000000000000002 /* Core/Utilities/LocalizationManager.swift */; };
+		C3E2661014B1C3485058D96F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9957257675BF87477C42BE74 /* Components.swift */; };
+		COMMSYNC0000000000000001 /* CommunityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = COMMSYNC0000000000000002 /* CommunityService.swift */; };
+		D6316D2B9BD068AE88B66CAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E19E55733BACB0D313EB80C /* User.swift */; };
+		DB55173C84D22AF4A32DEA19 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AAD2B23CCBD2A743E1EF5C /* CommunityView.swift */; };
+		DF00AFEDCB695F1326230A54 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2059DE2799C436F9ECA0D46F /* Colors.swift */; };
+		EB597E5111CB241A829CF59E /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF46475C13F52AC2BB1E941 /* WorldView.swift */; };
+		F2D8C631944BF9DA4843CA3F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929DFD06CA28AC79F7198A4E /* ProfileView.swift */; };
+		FIREBASEM000000000000001 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FIREBASEM000000000000002 /* FirebaseManager.swift */; };
+		L10N00000000000000000001 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = L10N00000000000000000002 /* LocalizationManager.swift */; };
 		L10N00000000000000000003 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = L10N00000000000000000004 /* Localizable.strings */; };
-		LEGAL0000000000000000001 /* Features/Legal/LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = LEGAL0000000000000000002 /* Features/Legal/LegalView.swift */; };
-		PROGSYNC0000000000000001 /* Services/ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = PROGSYNC0000000000000002 /* Services/ProgressService.swift */; };
-		TRIPSYNC0000000000000001 /* Services/TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = TRIPSYNC0000000000000002 /* Services/TripService.swift */; };
-		UNSPLASH00000000000000001 /* Core/Utilities/UnsplashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = UNSPLASH00000000000000010 /* Core/Utilities/UnsplashConfig.swift */; };
-		UNSPLASH00000000000000002 /* Services/UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = UNSPLASH00000000000000020 /* Services/UnsplashService.swift */; };
-		USERSYNC0000000000000001 /* Services/UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = USERSYNC0000000000000002 /* Services/UserService.swift */; };
+		LEGAL0000000000000000001 /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = LEGAL0000000000000000002 /* LegalView.swift */; };
+		PROGSYNC0000000000000001 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = PROGSYNC0000000000000002 /* ProgressService.swift */; };
+		TRIPSYNC0000000000000001 /* TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = TRIPSYNC0000000000000002 /* TripService.swift */; };
+		UNSPLASH00000000000000001 /* UnsplashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = UNSPLASH00000000000000010 /* UnsplashConfig.swift */; };
+		UNSPLASH00000000000000002 /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = UNSPLASH00000000000000020 /* UnsplashService.swift */; };
+		USERSYNC0000000000000001 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = USERSYNC0000000000000002 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01278C3F3E615C7E0C219668 /* Features/Auth/WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Auth/WelcomeView.swift; sourceTree = "<group>"; };
-		01CBD4438BF19C866E2C0DD3 /* Services/AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AuthManager.swift; sourceTree = "<group>"; };
+		01278C3F3E615C7E0C219668 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Auth/WelcomeView.swift; sourceTree = "<group>"; };
+		01CBD4438BF19C866E2C0DD3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AuthManager.swift; sourceTree = "<group>"; };
 		1337AD270EA09CF17E44BC7E /* TickTripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickTripApp.swift; sourceTree = "<group>"; };
-		2059DE2799C436F9ECA0D46F /* Core/DesignSystem/Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Colors.swift; sourceTree = "<group>"; };
+		2059DE2799C436F9ECA0D46F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Colors.swift; sourceTree = "<group>"; };
 		2DDA9D61680397968CD91B96 /* TickTrip.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; name = TickTrip.entitlements; path = TickTrip/TickTrip.entitlements; sourceTree = "<group>"; };
-		33AAD2B23CCBD2A743E1EF5C /* Features/Community/CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Community/CommunityView.swift; sourceTree = "<group>"; };
-		36F9B558132DC0BB229E1AA6 /* Services/SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/SubscriptionManager.swift; sourceTree = "<group>"; };
-		37B8EA3A365B421F65EEE37B /* Core/DesignSystem/Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Typography.swift; sourceTree = "<group>"; };
-		38D7D56D9C0FAFB4286D3643 /* Features/Subscription/PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Subscription/PaywallView.swift; sourceTree = "<group>"; };
-		462C3FA5381F9817BE93B226 /* Models/Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Place.swift; sourceTree = "<group>"; };
+		33AAD2B23CCBD2A743E1EF5C /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Community/CommunityView.swift; sourceTree = "<group>"; };
+		36F9B558132DC0BB229E1AA6 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/SubscriptionManager.swift; sourceTree = "<group>"; };
+		37B8EA3A365B421F65EEE37B /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Typography.swift; sourceTree = "<group>"; };
+		38D7D56D9C0FAFB4286D3643 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Subscription/PaywallView.swift; sourceTree = "<group>"; };
+		462C3FA5381F9817BE93B226 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Place.swift; sourceTree = "<group>"; };
 		5E48B376212EDA8363526B0B /* UserProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
-		657742D2154CA2EE35ECA715 /* Models/Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Trip.swift; sourceTree = "<group>"; };
-		6C54C26FCD8FBEC1D810C0BE /* Features/Auth/LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Auth/LoginView.swift; sourceTree = "<group>"; };
+		657742D2154CA2EE35ECA715 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Trip.swift; sourceTree = "<group>"; };
+		6C54C26FCD8FBEC1D810C0BE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Auth/LoginView.swift; sourceTree = "<group>"; };
 		719F26ECBDF41D75BF5E58BC /* ActivityService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActivityService.swift; sourceTree = "<group>"; };
-		73374CC078EFB861C38894F7 /* Services/ProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/ProgressManager.swift; sourceTree = "<group>"; };
-		80FB0106677C079992214332 /* Features/ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ViewModels.swift; sourceTree = "<group>"; };
-		83F30A3BF1219D3E52663768 /* Core/Extensions/View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Extensions/View+Extensions.swift"; sourceTree = "<group>"; };
-		8E19E55733BACB0D313EB80C /* Models/User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/User.swift; sourceTree = "<group>"; };
-		929DFD06CA28AC79F7198A4E /* Features/Profile/ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Profile/ProfileView.swift; sourceTree = "<group>"; };
-		945AA91C90214632B66D9A83 /* Models/Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Country.swift; sourceTree = "<group>"; };
-		9957257675BF87477C42BE74 /* Core/DesignSystem/Components/Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Components/Components.swift; sourceTree = "<group>"; };
+		73374CC078EFB861C38894F7 /* ProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/ProgressManager.swift; sourceTree = "<group>"; };
+		80FB0106677C079992214332 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/ViewModels.swift; sourceTree = "<group>"; };
+		83F30A3BF1219D3E52663768 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Extensions/View+Extensions.swift"; sourceTree = "<group>"; };
+		8E19E55733BACB0D313EB80C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		929DFD06CA28AC79F7198A4E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Profile/ProfileView.swift; sourceTree = "<group>"; };
+		945AA91C90214632B66D9A83 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Country.swift; sourceTree = "<group>"; };
+		9957257675BF87477C42BE74 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/DesignSystem/Components/Components.swift; sourceTree = "<group>"; };
 		A000000000000000000000F /* TickTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TickTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0000000000000000000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3B9AF4C2F5C3899005225A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BAF46475C13F52AC2BB1E941 /* Features/Social/WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Social/WorldView.swift; sourceTree = "<group>"; };
-		BDDA812091A927A0132092C9 /* Models/CommunityPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/CommunityPost.swift; sourceTree = "<group>"; };
-		C38140F67E56E94C8E944A83 /* Features/Onboarding/OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Onboarding/OnboardingView.swift; sourceTree = "<group>"; };
-		C8AB938F2FAD9198FEAF1CC1 /* Core/Utilities/HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/HapticManager.swift; sourceTree = "<group>"; };
-		CDE99790B193BFDC6A48228F /* Models/City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/City.swift; sourceTree = "<group>"; };
-		COMMSYNC0000000000000002 /* Services/CommunityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/CommunityService.swift; sourceTree = "<group>"; };
-		D1486C155FD6321A56ACE2AE /* Features/Explore/ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Explore/ExploreView.swift; sourceTree = "<group>"; };
-		D9B6FD2B98A083D497B367BA /* Models/Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Achievement.swift; sourceTree = "<group>"; };
+		BAF46475C13F52AC2BB1E941 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Social/WorldView.swift; sourceTree = "<group>"; };
+		BDDA812091A927A0132092C9 /* CommunityPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/CommunityPost.swift; sourceTree = "<group>"; };
+		C38140F67E56E94C8E944A83 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Onboarding/OnboardingView.swift; sourceTree = "<group>"; };
+		C8AB938F2FAD9198FEAF1CC1 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/HapticManager.swift; sourceTree = "<group>"; };
+		CDE99790B193BFDC6A48228F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/City.swift; sourceTree = "<group>"; };
+		COMMSYNC0000000000000002 /* CommunityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/CommunityService.swift; sourceTree = "<group>"; };
+		D1486C155FD6321A56ACE2AE /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Explore/ExploreView.swift; sourceTree = "<group>"; };
+		D9B6FD2B98A083D497B367BA /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Achievement.swift; sourceTree = "<group>"; };
 		E8877E54A3C0914740FCDA21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		EFF3F04B4A6CB45EE00884BC /* Features/MyTrip/MyTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/MyTrip/MyTripView.swift; sourceTree = "<group>"; };
+		EFF3F04B4A6CB45EE00884BC /* MyTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/MyTrip/MyTripView.swift; sourceTree = "<group>"; };
 		F0CB5DACA3F2B1D4DE6B6EED /* CityChecklistView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CityChecklistView.swift; sourceTree = "<group>"; };
-		FDAFE21C9D0D17E7136C2408 /* Services/TripManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/TripManager.swift; sourceTree = "<group>"; };
-		FIREBASEM000000000000002 /* Core/Utilities/FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/FirebaseManager.swift; sourceTree = "<group>"; };
-		L10N00000000000000000002 /* Core/Utilities/LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/LocalizationManager.swift; sourceTree = "<group>"; };
+		FDAFE21C9D0D17E7136C2408 /* TripManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/TripManager.swift; sourceTree = "<group>"; };
+		FIREBASEM000000000000002 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/FirebaseManager.swift; sourceTree = "<group>"; };
+		L10N00000000000000000002 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/LocalizationManager.swift; sourceTree = "<group>"; };
 		L10N00000000000000000005 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		L10N00000000000000000006 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		L10N00000000000000000007 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		L10N00000000000000000008 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		L10N00000000000000000009 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LEGAL0000000000000000002 /* Features/Legal/LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Legal/LegalView.swift; sourceTree = "<group>"; };
-		PROGSYNC0000000000000002 /* Services/ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/ProgressService.swift; sourceTree = "<group>"; };
-		TRIPSYNC0000000000000002 /* Services/TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/TripService.swift; sourceTree = "<group>"; };
-		UNSPLASH00000000000000010 /* Core/Utilities/UnsplashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/UnsplashConfig.swift; sourceTree = "<group>"; };
-		UNSPLASH00000000000000020 /* Services/UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/UnsplashService.swift; sourceTree = "<group>"; };
-		USERSYNC0000000000000002 /* Services/UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
+		LEGAL0000000000000000002 /* LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Legal/LegalView.swift; sourceTree = "<group>"; };
+		PROGSYNC0000000000000002 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/ProgressService.swift; sourceTree = "<group>"; };
+		TRIPSYNC0000000000000002 /* TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/TripService.swift; sourceTree = "<group>"; };
+		UNSPLASH00000000000000010 /* UnsplashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core/Utilities/UnsplashConfig.swift; sourceTree = "<group>"; };
+		UNSPLASH00000000000000020 /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/UnsplashService.swift; sourceTree = "<group>"; };
+		USERSYNC0000000000000002 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,44 +151,44 @@
 			isa = PBXGroup;
 			children = (
 				E8877E54A3C0914740FCDA21 /* ContentView.swift */,
-				2059DE2799C436F9ECA0D46F /* Core/DesignSystem/Colors.swift */,
-				9957257675BF87477C42BE74 /* Core/DesignSystem/Components/Components.swift */,
-				37B8EA3A365B421F65EEE37B /* Core/DesignSystem/Typography.swift */,
-				83F30A3BF1219D3E52663768 /* Core/Extensions/View+Extensions.swift */,
-				C8AB938F2FAD9198FEAF1CC1 /* Core/Utilities/HapticManager.swift */,
-				6C54C26FCD8FBEC1D810C0BE /* Features/Auth/LoginView.swift */,
-				01278C3F3E615C7E0C219668 /* Features/Auth/WelcomeView.swift */,
-				33AAD2B23CCBD2A743E1EF5C /* Features/Community/CommunityView.swift */,
-				D1486C155FD6321A56ACE2AE /* Features/Explore/ExploreView.swift */,
-				EFF3F04B4A6CB45EE00884BC /* Features/MyTrip/MyTripView.swift */,
-				C38140F67E56E94C8E944A83 /* Features/Onboarding/OnboardingView.swift */,
-				929DFD06CA28AC79F7198A4E /* Features/Profile/ProfileView.swift */,
-				BAF46475C13F52AC2BB1E941 /* Features/Social/WorldView.swift */,
-				38D7D56D9C0FAFB4286D3643 /* Features/Subscription/PaywallView.swift */,
-				80FB0106677C079992214332 /* Features/ViewModels.swift */,
-				D9B6FD2B98A083D497B367BA /* Models/Achievement.swift */,
-				CDE99790B193BFDC6A48228F /* Models/City.swift */,
-				BDDA812091A927A0132092C9 /* Models/CommunityPost.swift */,
-				945AA91C90214632B66D9A83 /* Models/Country.swift */,
-				462C3FA5381F9817BE93B226 /* Models/Place.swift */,
-				657742D2154CA2EE35ECA715 /* Models/Trip.swift */,
-				8E19E55733BACB0D313EB80C /* Models/User.swift */,
-				01CBD4438BF19C866E2C0DD3 /* Services/AuthManager.swift */,
-				73374CC078EFB861C38894F7 /* Services/ProgressManager.swift */,
-				36F9B558132DC0BB229E1AA6 /* Services/SubscriptionManager.swift */,
-				FDAFE21C9D0D17E7136C2408 /* Services/TripManager.swift */,
+				2059DE2799C436F9ECA0D46F /* Colors.swift */,
+				9957257675BF87477C42BE74 /* Components.swift */,
+				37B8EA3A365B421F65EEE37B /* Typography.swift */,
+				83F30A3BF1219D3E52663768 /* View+Extensions.swift */,
+				C8AB938F2FAD9198FEAF1CC1 /* HapticManager.swift */,
+				6C54C26FCD8FBEC1D810C0BE /* LoginView.swift */,
+				01278C3F3E615C7E0C219668 /* WelcomeView.swift */,
+				33AAD2B23CCBD2A743E1EF5C /* CommunityView.swift */,
+				D1486C155FD6321A56ACE2AE /* ExploreView.swift */,
+				EFF3F04B4A6CB45EE00884BC /* MyTripView.swift */,
+				C38140F67E56E94C8E944A83 /* OnboardingView.swift */,
+				929DFD06CA28AC79F7198A4E /* ProfileView.swift */,
+				BAF46475C13F52AC2BB1E941 /* WorldView.swift */,
+				38D7D56D9C0FAFB4286D3643 /* PaywallView.swift */,
+				80FB0106677C079992214332 /* ViewModels.swift */,
+				D9B6FD2B98A083D497B367BA /* Achievement.swift */,
+				CDE99790B193BFDC6A48228F /* City.swift */,
+				BDDA812091A927A0132092C9 /* CommunityPost.swift */,
+				945AA91C90214632B66D9A83 /* Country.swift */,
+				462C3FA5381F9817BE93B226 /* Place.swift */,
+				657742D2154CA2EE35ECA715 /* Trip.swift */,
+				8E19E55733BACB0D313EB80C /* User.swift */,
+				01CBD4438BF19C866E2C0DD3 /* AuthManager.swift */,
+				73374CC078EFB861C38894F7 /* ProgressManager.swift */,
+				36F9B558132DC0BB229E1AA6 /* SubscriptionManager.swift */,
+				FDAFE21C9D0D17E7136C2408 /* TripManager.swift */,
 				1337AD270EA09CF17E44BC7E /* TickTripApp.swift */,
 				A0000000000000000000011 /* Assets.xcassets */,
-				L10N00000000000000000002 /* Core/Utilities/LocalizationManager.swift */,
+				L10N00000000000000000002 /* LocalizationManager.swift */,
 				L10N00000000000000000004 /* Localizable.strings */,
-				LEGAL0000000000000000002 /* Features/Legal/LegalView.swift */,
-				UNSPLASH00000000000000010 /* Core/Utilities/UnsplashConfig.swift */,
-				UNSPLASH00000000000000020 /* Services/UnsplashService.swift */,
-				FIREBASEM000000000000002 /* Core/Utilities/FirebaseManager.swift */,
-				USERSYNC0000000000000002 /* Services/UserService.swift */,
-				TRIPSYNC0000000000000002 /* Services/TripService.swift */,
-				PROGSYNC0000000000000002 /* Services/ProgressService.swift */,
-				COMMSYNC0000000000000002 /* Services/CommunityService.swift */,
+				LEGAL0000000000000000002 /* LegalView.swift */,
+				UNSPLASH00000000000000010 /* UnsplashConfig.swift */,
+				UNSPLASH00000000000000020 /* UnsplashService.swift */,
+				FIREBASEM000000000000002 /* FirebaseManager.swift */,
+				USERSYNC0000000000000002 /* UserService.swift */,
+				TRIPSYNC0000000000000002 /* TripService.swift */,
+				PROGSYNC0000000000000002 /* ProgressService.swift */,
+				COMMSYNC0000000000000002 /* CommunityService.swift */,
 				A3B9AF4C2F5C3899005225A6 /* GoogleService-Info.plist */,
 				D72B68C94CD53C3860FDBA86 /* Services */,
 				63D87A1A8A86ED64D44CB639 /* Features */,
@@ -294,42 +294,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB877E6FC9F69B9CE81AD1A7 /* ContentView.swift in Sources */,
-				DF00AFEDCB695F1326230A54 /* Core/DesignSystem/Colors.swift in Sources */,
-				C3E2661014B1C3485058D96F /* Core/DesignSystem/Components/Components.swift in Sources */,
-				4D7CE563F900B9FE2D567EF1 /* Core/DesignSystem/Typography.swift in Sources */,
-				3B600D77746C8517363466BB /* Core/Extensions/View+Extensions.swift in Sources */,
-				525C1B2C938E48BE0E429B05 /* Core/Utilities/HapticManager.swift in Sources */,
-				7ECCB2726F2936039893512A /* Features/Auth/LoginView.swift in Sources */,
-				3684D71D50721500C80C1DEF /* Features/Auth/WelcomeView.swift in Sources */,
-				DB55173C84D22AF4A32DEA19 /* Features/Community/CommunityView.swift in Sources */,
-				242BFC6536C364D6E481A725 /* Features/Explore/ExploreView.swift in Sources */,
-				BAAE2D130CCA1CE58291EFE3 /* Features/MyTrip/MyTripView.swift in Sources */,
-				B8A3CDC18307F9554CA62667 /* Features/Onboarding/OnboardingView.swift in Sources */,
-				F2D8C631944BF9DA4843CA3F /* Features/Profile/ProfileView.swift in Sources */,
-				EB597E5111CB241A829CF59E /* Features/Social/WorldView.swift in Sources */,
-				2C07F0F06FF25AE0E3B37EBA /* Features/Subscription/PaywallView.swift in Sources */,
-				7F93B02666723DC9F0957000 /* Features/ViewModels.swift in Sources */,
-				0395D1BD30620340EB88B731 /* Models/Achievement.swift in Sources */,
-				16B56EA1799D6E9D3F16FA00 /* Models/City.swift in Sources */,
-				6EB56006C8B1381F57469273 /* Models/CommunityPost.swift in Sources */,
-				769B7CA8353155C5B54AE5F0 /* Models/Country.swift in Sources */,
-				0038E9054B5B826E150E0CFC /* Models/Place.swift in Sources */,
-				921F180B8DF407AC18192420 /* Models/Trip.swift in Sources */,
-				D6316D2B9BD068AE88B66CAB /* Models/User.swift in Sources */,
-				B02BD51050C33A1276C5E1C0 /* Services/AuthManager.swift in Sources */,
-				7C6108BB8A262C49B0648258 /* Services/ProgressManager.swift in Sources */,
-				98A62C586DEF06B71375FA25 /* Services/SubscriptionManager.swift in Sources */,
-				A6777163F9120953D0379E25 /* Services/TripManager.swift in Sources */,
+				DF00AFEDCB695F1326230A54 /* Colors.swift in Sources */,
+				C3E2661014B1C3485058D96F /* Components.swift in Sources */,
+				4D7CE563F900B9FE2D567EF1 /* Typography.swift in Sources */,
+				3B600D77746C8517363466BB /* View+Extensions.swift in Sources */,
+				525C1B2C938E48BE0E429B05 /* HapticManager.swift in Sources */,
+				7ECCB2726F2936039893512A /* LoginView.swift in Sources */,
+				3684D71D50721500C80C1DEF /* WelcomeView.swift in Sources */,
+				DB55173C84D22AF4A32DEA19 /* CommunityView.swift in Sources */,
+				242BFC6536C364D6E481A725 /* ExploreView.swift in Sources */,
+				BAAE2D130CCA1CE58291EFE3 /* MyTripView.swift in Sources */,
+				B8A3CDC18307F9554CA62667 /* OnboardingView.swift in Sources */,
+				F2D8C631944BF9DA4843CA3F /* ProfileView.swift in Sources */,
+				EB597E5111CB241A829CF59E /* WorldView.swift in Sources */,
+				2C07F0F06FF25AE0E3B37EBA /* PaywallView.swift in Sources */,
+				7F93B02666723DC9F0957000 /* ViewModels.swift in Sources */,
+				0395D1BD30620340EB88B731 /* Achievement.swift in Sources */,
+				16B56EA1799D6E9D3F16FA00 /* City.swift in Sources */,
+				6EB56006C8B1381F57469273 /* CommunityPost.swift in Sources */,
+				769B7CA8353155C5B54AE5F0 /* Country.swift in Sources */,
+				0038E9054B5B826E150E0CFC /* Place.swift in Sources */,
+				921F180B8DF407AC18192420 /* Trip.swift in Sources */,
+				D6316D2B9BD068AE88B66CAB /* User.swift in Sources */,
+				B02BD51050C33A1276C5E1C0 /* AuthManager.swift in Sources */,
+				7C6108BB8A262C49B0648258 /* ProgressManager.swift in Sources */,
+				98A62C586DEF06B71375FA25 /* SubscriptionManager.swift in Sources */,
+				A6777163F9120953D0379E25 /* TripManager.swift in Sources */,
 				B27C438ECCB57D5E47109085 /* TickTripApp.swift in Sources */,
-				L10N00000000000000000001 /* Core/Utilities/LocalizationManager.swift in Sources */,
-				LEGAL0000000000000000001 /* Features/Legal/LegalView.swift in Sources */,
-				UNSPLASH00000000000000001 /* Core/Utilities/UnsplashConfig.swift in Sources */,
-				UNSPLASH00000000000000002 /* Services/UnsplashService.swift in Sources */,
-				FIREBASEM000000000000001 /* Core/Utilities/FirebaseManager.swift in Sources */,
-				USERSYNC0000000000000001 /* Services/UserService.swift in Sources */,
-				TRIPSYNC0000000000000001 /* Services/TripService.swift in Sources */,
-				PROGSYNC0000000000000001 /* Services/ProgressService.swift in Sources */,
-				COMMSYNC0000000000000001 /* Services/CommunityService.swift in Sources */,
+				L10N00000000000000000001 /* LocalizationManager.swift in Sources */,
+				LEGAL0000000000000000001 /* LegalView.swift in Sources */,
+				UNSPLASH00000000000000001 /* UnsplashConfig.swift in Sources */,
+				UNSPLASH00000000000000002 /* UnsplashService.swift in Sources */,
+				FIREBASEM000000000000001 /* FirebaseManager.swift in Sources */,
+				USERSYNC0000000000000001 /* UserService.swift in Sources */,
+				TRIPSYNC0000000000000001 /* TripService.swift in Sources */,
+				PROGSYNC0000000000000001 /* ProgressService.swift in Sources */,
+				COMMSYNC0000000000000001 /* CommunityService.swift in Sources */,
 				441296CE25DCD344BD011776 /* ActivityService.swift in Sources */,
 				B0C129EB1C5BFDC29F86AE8A /* CityChecklistView.swift in Sources */,
 				60E750C83D0B76768B9C56B0 /* UserProfileView.swift in Sources */,
@@ -483,7 +483,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SY8MHTTQHM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_AppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_CFBundleDisplayName = TickTrip;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -512,7 +514,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SY8MHTTQHM;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_AppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_CFBundleDisplayName = TickTrip;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
