@@ -207,6 +207,15 @@
 "about_section" = "Hakkında";
 "language_settings" = "Dil";
 "system_default" = "Sistem Varsayılanı";
+"places_visited" = "Ziyaret Edilen Yerler";
+"cities_explored" = "Keşfedilen Şehirler";
+"countries_explored" = "Keşfedilen Ülkeler";
+"no_places_yet" = "Henüz Yer Yok";
+"start_exploring_places" = "İlerlemenizi burada görmek için yerleri işaretlemeye başlayın!";
+"no_cities_yet" = "Henüz Şehir Yok";
+"start_exploring_cities" = "Şehirleri ziyaret edin ve yerleri işaretleyin!";
+"no_countries_yet" = "Henüz Ülke Yok";
+"start_exploring_countries" = "Ülkeleri keşfedin ve yerleri işaretleyin!";
 "change_photo" = "Fotoğrafı Değiştir";
 "username_label" = "Kullanıcı Adı";
 "username_placeholder" = "kullanici_adi";

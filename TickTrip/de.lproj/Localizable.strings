@@ -206,6 +206,15 @@
 "about_section" = "Über";
 "language_settings" = "Sprache";
 "system_default" = "Systemstandard";
+"places_visited" = "Besuchte Orte";
+"cities_explored" = "Erkundete Städte";
+"countries_explored" = "Erkundete Länder";
+"no_places_yet" = "Noch keine Orte";
+"start_exploring_places" = "Beginne Orte abzuhaken, um deinen Fortschritt hier zu sehen!";
+"no_cities_yet" = "Noch keine Städte";
+"start_exploring_cities" = "Besuche Städte und hake Orte ab, um sie hier zu sehen!";
+"no_countries_yet" = "Noch keine Länder";
+"start_exploring_countries" = "Erkunde Länder und hake Orte ab, um sie hier zu sehen!";
 
 /* === Premium / Paywall === */
 "explorer_pro" = "Explorer Pro";

@@ -337,6 +337,7 @@ class ProfileViewModel: ObservableObject {
     
     // Use shared ProgressManager for real stats
     private var progressManager = ProgressManager.shared
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         if let currentUser = Auth.auth().currentUser {
@@ -344,6 +345,14 @@ class ProfileViewModel: ObservableObject {
             user.email = currentUser.email ?? ""
             user.displayName = currentUser.displayName ?? "Traveler"
         }
+        
+        // Subscribe to ProgressManager changes so profile updates in real-time
+        progressManager.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
+            .store(in: &cancellables)
     }
     
     var unlockedAchievements: [Achievement] {
@@ -354,32 +363,100 @@ class ProfileViewModel: ObservableObject {
         achievements.filter { !$0.isUnlocked }
     }
     
-    var worldProgress: Double {
-        let total = Country.samples.count
-        let visited = progressManager.completedCountries.count
-        return total > 0 ? Double(visited) / Double(total) : 0
+    // MARK: - Place-based progress (increments with each checked place)
+    
+    private func placesProgress(for continent: String? = nil) -> Double {
+        let countries: [Country]
+        if let continent = continent {
+            countries = Country.samples.filter { $0.continent == continent }
+        } else {
+            countries = Country.samples
+        }
+        
+        var totalPlaceCount = 0
+        var completedPlaceCount = 0
+        
+        for country in countries {
+            let cities = City.samples.filter { $0.countryId == country.id }
+            for city in cities {
+                let places = Place.places(for: city.id)
+                if places.isEmpty {
+                    totalPlaceCount += city.totalPlaces
+                } else {
+                    totalPlaceCount += places.count
+                    completedPlaceCount += places.filter { progressManager.completedPlaces.contains($0.id) }.count
+                }
+            }
+        }
+        
+        return totalPlaceCount > 0 ? Double(completedPlaceCount) / Double(totalPlaceCount) : 0
     }
     
-    var europeProgress: Double {
-        let europeTotal = Country.samples.filter { $0.continent == "Europe" }.count
-        let europeVisited = Country.samples.filter { 
-            $0.continent == "Europe" && progressManager.completedCountries.contains($0.id) 
-        }.count
-        return europeTotal > 0 ? Double(europeVisited) / Double(europeTotal) : 0
-    }
-    
-    var asiaProgress: Double { 
-        let asiaTotal = Country.samples.filter { $0.continent == "Asia" }.count
-        let asiaVisited = Country.samples.filter { 
-            $0.continent == "Asia" && progressManager.completedCountries.contains($0.id) 
-        }.count
-        return asiaTotal > 0 ? Double(asiaVisited) / Double(asiaTotal) : 0
-     }
+    var worldProgress: Double { placesProgress() }
+    var europeProgress: Double { placesProgress(for: "Europe") }
+    var asiaProgress: Double { placesProgress(for: "Asia") }
     
     /// Real stats from ProgressManager
     var totalPlaces: Int { progressManager.completedPlaces.count }
     var totalCities: Int { progressManager.completedCities.count }
     var totalCountries: Int { progressManager.completedCountries.count }
+    
+    // MARK: - Data for detail views
+    
+    /// Completed places grouped by city name
+    var completedPlacesByCity: [(cityName: String, countryFlag: String, places: [Place])] {
+        let completedIds = progressManager.completedPlaces
+        guard !completedIds.isEmpty else { return [] }
+        
+        var result: [(cityName: String, countryFlag: String, places: [Place])] = []
+        
+        for country in Country.samples {
+            let cities = City.samples.filter { $0.countryId == country.id }
+            for city in cities {
+                let allPlaces = Place.places(for: city.id)
+                let completed = allPlaces.filter { completedIds.contains($0.id) }
+                if !completed.isEmpty {
+                    result.append((cityName: city.name, countryFlag: country.flagEmoji, places: completed))
+                }
+            }
+        }
+        
+        return result.sorted { $0.places.count > $1.places.count }
+    }
+    
+    /// Cities with at least 1 completed place
+    var visitedCitiesDetail: [(city: City, country: Country, completed: Int, total: Int)] {
+        var result: [(city: City, country: Country, completed: Int, total: Int)] = []
+        
+        for country in Country.samples {
+            let cities = City.samples.filter { $0.countryId == country.id }
+            for city in cities {
+                let allPlaces = Place.places(for: city.id)
+                let total = allPlaces.isEmpty ? city.totalPlaces : allPlaces.count
+                let completed = allPlaces.filter { progressManager.completedPlaces.contains($0.id) }.count
+                if completed > 0 {
+                    result.append((city: city, country: country, completed: completed, total: total))
+                }
+            }
+        }
+        
+        return result.sorted { $0.completed > $1.completed }
+    }
+    
+    /// Countries with at least 1 completed place
+    var visitedCountriesDetail: [(country: Country, completed: Int, total: Int)] {
+        var result: [(country: Country, completed: Int, total: Int)] = []
+        
+        for country in Country.samples {
+            let completed = progressManager.completedCountForCountry(country.id)
+            let total = progressManager.totalPlacesForCountry(country.id)
+            if completed > 0 {
+                result.append((country: country, completed: completed, total: total))
+            }
+        }
+        
+        return result.sorted { $0.completed > $1.completed }
+    }
     
     func updateProfile(displayName: String, username: String, bio: String) {
         isLoading = true

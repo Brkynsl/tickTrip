@@ -3,6 +3,9 @@ import SwiftUI
 struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     @EnvironmentObject var authManager: AuthManager
+    @State private var showPlacesDetail = false
+    @State private var showCitiesDetail = false
+    @State private var showCountriesDetail = false
     
     var body: some View {
         NavigationStack {
@@ -68,6 +71,15 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $viewModel.showEditProfile) {
                 EditProfileView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showPlacesDetail) {
+                PlacesDetailView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showCitiesDetail) {
+                CitiesDetailView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showCountriesDetail) {
+                CountriesDetailView(viewModel: viewModel)
             }
             .alert("Error", isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
@@ -186,9 +198,21 @@ struct ProfileView: View {
                 .padding(.horizontal, 16)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                statCard(value: "\(viewModel.totalPlaces)", label: "places_label".localized, icon: "checkmark.circle.fill", color: TTColors.foxOrange)
-                statCard(value: "\(viewModel.totalCities)", label: "cities_label".localized, icon: "building.2.fill", color: TTColors.secondaryFallback)
-                statCard(value: "\(viewModel.totalCountries)", label: "countries_label".localized, icon: "globe.americas.fill", color: TTColors.success)
+                Button { showPlacesDetail = true } label: {
+                    statCard(value: "\(viewModel.totalPlaces)", label: "places_label".localized, icon: "checkmark.circle.fill", color: TTColors.foxOrange)
+                }
+                .buttonStyle(.plain)
+                
+                Button { showCitiesDetail = true } label: {
+                    statCard(value: "\(viewModel.totalCities)", label: "cities_label".localized, icon: "building.2.fill", color: TTColors.secondaryFallback)
+                }
+                .buttonStyle(.plain)
+                
+                Button { showCountriesDetail = true } label: {
+                    statCard(value: "\(viewModel.totalCountries)", label: "countries_label".localized, icon: "globe.americas.fill", color: TTColors.success)
+                }
+                .buttonStyle(.plain)
+                
                 statCard(value: "\(viewModel.user.totalTipsShared)", label: "tips_label".localized, icon: "bubble.left.fill", color: TTColors.info)
                 statCard(value: "\(TripManager.shared.trips.count)", label: "trips_label".localized, icon: "suitcase.fill", color: TTColors.warning)
                 statCard(value: "\(viewModel.unlockedAchievements.count)", label: "badges_label".localized, icon: "star.fill", color: TTColors.premiumGold)
@@ -679,5 +703,380 @@ struct ChangePasswordView: View {
             .padding(.top)
         }
         .navigationTitle("change_password".localized)
+    }
+}
+
+// MARK: - Places Detail View (grouped by city)
+struct PlacesDetailView: View {
+    @ObservedObject var viewModel: ProfileViewModel
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            Group {
+                if viewModel.completedPlacesByCity.isEmpty {
+                    emptyState
+                } else {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            // Summary card
+                            HStack(spacing: 16) {
+                                ZStack {
+                                    Circle()
+                                        .fill(TTColors.foxOrange.opacity(0.15))
+                                        .frame(width: 56, height: 56)
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.system(size: 28))
+                                        .foregroundStyle(TTColors.foxOrange)
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("\(viewModel.totalPlaces)")
+                                        .font(TTTypography.displaySmall)
+                                        .foregroundStyle(TTColors.textPrimary)
+                                    Text("places_visited".localized)
+                                        .font(TTTypography.bodyMedium)
+                                        .foregroundStyle(TTColors.textSecondary)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding(16)
+                            .background(TTColors.cardBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .shadow(color: TTColors.cardShadow, radius: 6, x: 0, y: 3)
+                            .padding(.horizontal, 16)
+                            
+                            // Places grouped by city
+                            ForEach(Array(viewModel.completedPlacesByCity.enumerated()), id: \.offset) { _, group in
+                                VStack(alignment: .leading, spacing: 10) {
+                                    // City header
+                                    HStack(spacing: 8) {
+                                        Text(group.countryFlag)
+                                            .font(.system(size: 20))
+                                        Text(group.cityName)
+                                            .font(TTTypography.headlineSmall)
+                                            .foregroundStyle(TTColors.textPrimary)
+                                        
+                                        Spacer()
+                                        
+                                        Text("\(group.places.count)")
+                                            .font(TTTypography.badgeFont)
+                                            .foregroundStyle(.white)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 4)
+                                            .background(TTColors.foxOrange)
+                                            .clipShape(Capsule())
+                                    }
+                                    .padding(.horizontal, 16)
+                                    
+                                    // Places in this city
+                                    VStack(spacing: 6) {
+                                        ForEach(group.places) { place in
+                                            HStack(spacing: 12) {
+                                                Image(systemName: place.category.icon)
+                                                    .font(.system(size: 16))
+                                                    .foregroundStyle(TTColors.foxOrange)
+                                                    .frame(width: 28)
+                                                
+                                                VStack(alignment: .leading, spacing: 2) {
+                                                    Text(place.name)
+                                                        .font(TTTypography.titleSmall)
+                                                        .foregroundStyle(TTColors.textPrimary)
+                                                    
+                                                    Text(place.category.rawValue)
+                                                        .font(TTTypography.captionSmall)
+                                                        .foregroundStyle(TTColors.textTertiary)
+                                                }
+                                                
+                                                Spacer()
+                                                
+                                                Image(systemName: "checkmark.circle.fill")
+                                                    .foregroundStyle(TTColors.success)
+                                                    .font(.system(size: 18))
+                                            }
+                                            .padding(.horizontal, 14)
+                                            .padding(.vertical, 10)
+                                        }
+                                    }
+                                    .background(TTColors.cardBackground)
+                                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                                    .shadow(color: TTColors.cardShadow, radius: 4, x: 0, y: 2)
+                                    .padding(.horizontal, 16)
+                                }
+                            }
+                        }
+                        .padding(.top, 16)
+                        .padding(.bottom, 30)
+                    }
+                }
+            }
+            .background(TTColors.backgroundPrimary.ignoresSafeArea())
+            .navigationTitle("places_label".localized)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("done".localized) { dismiss() }
+                        .foregroundStyle(TTColors.foxOrange)
+                }
+            }
+        }
+    }
+    
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "map")
+                .font(.system(size: 48))
+                .foregroundStyle(TTColors.textTertiary)
+            Text("no_places_yet".localized)
+                .font(TTTypography.headlineSmall)
+                .foregroundStyle(TTColors.textSecondary)
+            Text("start_exploring_places".localized)
+                .font(TTTypography.bodyMedium)
+                .foregroundStyle(TTColors.textTertiary)
+                .multilineTextAlignment(.center)
+        }
+        .padding(40)
+    }
+}
+
+// MARK: - Cities Detail View
+struct CitiesDetailView: View {
+    @ObservedObject var viewModel: ProfileViewModel
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            Group {
+                if viewModel.visitedCitiesDetail.isEmpty {
+                    emptyState
+                } else {
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            // Summary card
+                            HStack(spacing: 16) {
+                                ZStack {
+                                    Circle()
+                                        .fill(TTColors.secondaryFallback.opacity(0.15))
+                                        .frame(width: 56, height: 56)
+                                    Image(systemName: "building.2.fill")
+                                        .font(.system(size: 28))
+                                        .foregroundStyle(TTColors.secondaryFallback)
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("\(viewModel.totalCities)")
+                                        .font(TTTypography.displaySmall)
+                                        .foregroundStyle(TTColors.textPrimary)
+                                    Text("cities_explored".localized)
+                                        .font(TTTypography.bodyMedium)
+                                        .foregroundStyle(TTColors.textSecondary)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding(16)
+                            .background(TTColors.cardBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .shadow(color: TTColors.cardShadow, radius: 6, x: 0, y: 3)
+                            .padding(.horizontal, 16)
+                            
+                            // City cards
+                            VStack(spacing: 10) {
+                                ForEach(Array(viewModel.visitedCitiesDetail.enumerated()), id: \.offset) { _, item in
+                                    HStack(spacing: 14) {
+                                        // City icon
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                                .fill(cityGradient(for: item.city))
+                                                .frame(width: 48, height: 48)
+                                            Text(item.country.flagEmoji)
+                                                .font(.system(size: 24))
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            HStack {
+                                                Text(item.city.name)
+                                                    .font(TTTypography.titleSmall)
+                                                    .foregroundStyle(TTColors.textPrimary)
+                                                
+                                                Spacer()
+                                                
+                                                Text("\(item.completed)/\(item.total)")
+                                                    .font(TTTypography.labelMedium)
+                                                    .foregroundStyle(TTColors.foxOrange)
+                                            }
+                                            
+                                            TTProgressBar(
+                                                progress: item.total > 0 ? Double(item.completed) / Double(item.total) : 0,
+                                                height: 6
+                                            )
+                                        }
+                                    }
+                                    .padding(14)
+                                    .background(TTColors.cardBackground)
+                                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                                    .shadow(color: TTColors.cardShadow, radius: 4, x: 0, y: 2)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                        }
+                        .padding(.top, 16)
+                        .padding(.bottom, 30)
+                    }
+                }
+            }
+            .background(TTColors.backgroundPrimary.ignoresSafeArea())
+            .navigationTitle("cities_label".localized)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("done".localized) { dismiss() }
+                        .foregroundStyle(TTColors.foxOrange)
+                }
+            }
+        }
+    }
+    
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "building.2")
+                .font(.system(size: 48))
+                .foregroundStyle(TTColors.textTertiary)
+            Text("no_cities_yet".localized)
+                .font(TTTypography.headlineSmall)
+                .foregroundStyle(TTColors.textSecondary)
+            Text("start_exploring_cities".localized)
+                .font(TTTypography.bodyMedium)
+                .foregroundStyle(TTColors.textTertiary)
+                .multilineTextAlignment(.center)
+        }
+        .padding(40)
+    }
+    
+    private func cityGradient(for city: City) -> LinearGradient {
+        let hue = Double(abs(city.id.hashValue) % 360) / 360.0
+        return LinearGradient(
+            colors: [
+                Color(hue: hue, saturation: 0.35, brightness: 0.9),
+                Color(hue: hue + 0.05, saturation: 0.45, brightness: 0.75)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+}
+
+// MARK: - Countries Detail View
+struct CountriesDetailView: View {
+    @ObservedObject var viewModel: ProfileViewModel
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            Group {
+                if viewModel.visitedCountriesDetail.isEmpty {
+                    emptyState
+                } else {
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            // Summary card
+                            HStack(spacing: 16) {
+                                ZStack {
+                                    Circle()
+                                        .fill(TTColors.success.opacity(0.15))
+                                        .frame(width: 56, height: 56)
+                                    Image(systemName: "globe.americas.fill")
+                                        .font(.system(size: 28))
+                                        .foregroundStyle(TTColors.success)
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("\(viewModel.totalCountries)")
+                                        .font(TTTypography.displaySmall)
+                                        .foregroundStyle(TTColors.textPrimary)
+                                    Text("countries_explored".localized)
+                                        .font(TTTypography.bodyMedium)
+                                        .foregroundStyle(TTColors.textSecondary)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding(16)
+                            .background(TTColors.cardBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .shadow(color: TTColors.cardShadow, radius: 6, x: 0, y: 3)
+                            .padding(.horizontal, 16)
+                            
+                            // Country cards
+                            VStack(spacing: 10) {
+                                ForEach(Array(viewModel.visitedCountriesDetail.enumerated()), id: \.offset) { _, item in
+                                    HStack(spacing: 14) {
+                                        Text(item.country.flagEmoji)
+                                            .font(.system(size: 36))
+                                        
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            HStack {
+                                                Text(item.country.name)
+                                                    .font(TTTypography.titleSmall)
+                                                    .foregroundStyle(TTColors.textPrimary)
+                                                
+                                                Spacer()
+                                                
+                                                Text("\(item.completed)/\(item.total)")
+                                                    .font(TTTypography.labelMedium)
+                                                    .foregroundStyle(TTColors.foxOrange)
+                                            }
+                                            
+                                            TTProgressBar(
+                                                progress: item.total > 0 ? Double(item.completed) / Double(item.total) : 0,
+                                                height: 6,
+                                                gradient: TTColors.tealGradient
+                                            )
+                                            
+                                            Text(item.country.continent)
+                                                .font(TTTypography.captionSmall)
+                                                .foregroundStyle(TTColors.textTertiary)
+                                        }
+                                    }
+                                    .padding(14)
+                                    .background(TTColors.cardBackground)
+                                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                                    .shadow(color: TTColors.cardShadow, radius: 4, x: 0, y: 2)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                        }
+                        .padding(.top, 16)
+                        .padding(.bottom, 30)
+                    }
+                }
+            }
+            .background(TTColors.backgroundPrimary.ignoresSafeArea())
+            .navigationTitle("countries_label".localized)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("done".localized) { dismiss() }
+                        .foregroundStyle(TTColors.foxOrange)
+                }
+            }
+        }
+    }
+    
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "globe")
+                .font(.system(size: 48))
+                .foregroundStyle(TTColors.textTertiary)
+            Text("no_countries_yet".localized)
+                .font(TTTypography.headlineSmall)
+                .foregroundStyle(TTColors.textSecondary)
+            Text("start_exploring_countries".localized)
+                .font(TTTypography.bodyMedium)
+                .foregroundStyle(TTColors.textTertiary)
+                .multilineTextAlignment(.center)
+        }
+        .padding(40)
     }
 }

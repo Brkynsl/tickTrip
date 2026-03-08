@@ -7,7 +7,7 @@ struct WelcomeView: View {
     @State private var showSignUp = false
     @State private var showTerms = false
     @State private var showPrivacy = false
-    @State private var animateContent = false
+    @State private var animateContent = true
     @State private var foxBounce: CGFloat = 0
     @State private var backgroundOffset: CGFloat = 0
     
@@ -59,17 +59,7 @@ struct WelcomeView: View {
             .sheet(isPresented: $showPrivacy) {
                 PrivacyPolicyView()
             }
-            .onAppear {
-                withAnimation(.easeOut(duration: 0.8).delay(0.2)) {
-                    animateContent = true
-                }
-                withAnimation(.easeInOut(duration: 2.0).repeatForever(autoreverses: true)) {
-                    foxBounce = -8
-                }
-                withAnimation(.linear(duration: 20).repeatForever(autoreverses: true)) {
-                    backgroundOffset = -50
-                }
-            }
+
         }
     }
     
